@@ -1,16 +1,33 @@
-import emptyState from './assets/emptyState.JPG';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes
+} from 'react-router-dom';
 import './App.css';
+import  Employees from './views/employees';
 
-function App() {
+
+function App () {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={emptyState} alt="logo" />
-        <p>There is nothing here.</p>
-        Create a new employee by clicking the New Employee butoon to get started
-      </header>
-    </div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Navigate to="/employees" replace />}></Route>
+          <Route
+          exact
+          path="/employees"
+          element={<Employees />}
+          >
+          </Route>
+        </Routes>
+      </Router>
   );
 }
 
+
+
 export default App;
+
+
