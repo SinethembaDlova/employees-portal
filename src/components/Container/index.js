@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageContainer } from './index.style';
+import PageContainer  from './index.style';
 
 const Container = ({ children }) => {
 
