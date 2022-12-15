@@ -8,6 +8,7 @@ import {
 import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import  Employee from './views/employee';
 import  Employees from './views/employees';
 
 
@@ -20,13 +21,17 @@ function App () {
         <Sidebar active={setActiveClick} />
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Navigate to="/employees" replace />}></Route>
+          <Route exact path="/" element={<Navigate to="/employees" replace />} />
           <Route
           exact
           path="/employees"
           element={<Employees />}
-          >
-          </Route>
+          />
+          <Route
+            exact
+            path="/employees/:id"
+            element={<Employee />}
+          />
         </Routes>
       </Router>
   );
