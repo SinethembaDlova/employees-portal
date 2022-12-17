@@ -1,12 +1,18 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../../context/GlobalState';
+import { getEmployees } from '../../api'
 import Container from '../../components/Container';
 import Table from '../../components/Table';
 
 
 const Employees = () => {
 
+  useEffect(() =>{
+    const APIEmployees = getEmployees()
+  console.log('API employees: ', APIEmployees);
+
+  })
   const { employees } = useContext(GlobalContext)
   console.log('employees: ', employees )
 

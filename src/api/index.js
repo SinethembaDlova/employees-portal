@@ -1,29 +1,33 @@
 
 import axios from 'axios';
-import URL from '../constants/api/urls';
+
+const URL = endpoint => {
+  const default_endpoint = process.env.REACT_APP_API;
+  return default_endpoint || endpoint;
+}
 
 const createEmployee = async (body) => {
   const path = `${URL()}/employees`;
 
   try {
     const results = await axios.post(path, body);
-    return results;
+    return results?.data?.data;
   } catch (error) {
     throw new Error(error);
   }
 }
 const getEmployees = async () => {
   const path = `${URL()}/employees`;
-
+	
   try {
     const results = await axios.get(path, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    return results;
+    return results?.data?.data;
   } catch (error) {
-      throw new Error(error);
+    throw new Error(error);
   }
 }
 
@@ -31,12 +35,12 @@ const getEmployee = async(id) => {
 	const path = `${URL()}/employees/${id}`;
 
 	try {
-		const res = await axios.get(path, {
+		const results = await axios.get(path, {
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		});
-		return res;
+		return results?.data?.data;
 	} catch (error) {
 		throw new Error(error);
 	}
@@ -47,8 +51,8 @@ const updateEmployee = async(id, body) => {
   const path = `${URL()}/employees`;
 
   try {
-    const results = await axios.post(path, body);
-    return results;
+    const results = await axios.update(path, body);
+    return results?.data?.data;
   } catch (error) {
     throw new Error(error);
   }
