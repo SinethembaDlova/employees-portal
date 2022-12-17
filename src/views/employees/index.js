@@ -1,15 +1,14 @@
-import React, { Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { setEmployees } from '../../redux/reducers/employees';
+import { GlobalContext } from '../../context/GlobalState';
 import Container from '../../components/Container';
 import Table from '../../components/Table';
 
 
 const Employees = () => {
 
-  const employees = useSelector( (state) => state.employeesFilter.employees);
-  const dispatch = useDispatch();
+  const { employees } = useContext(GlobalContext)
+  console.log('employees: ', employees )
 
   const tableData = data => {
     return data.map((item, index) => ({
@@ -70,7 +69,6 @@ const Employees = () => {
     <Fragment>
         <Container>
             <h1>Employees</h1>
-            <input onChange={ (event) => dispatch(setEmployees(event.target.value))} />
             <Table
               columnNames={[
                 '#',
@@ -79,7 +77,7 @@ const Employees = () => {
                 'Contact Number',
                 'Action'
               ]}
-              data={tableData(employees || [])}
+              data={tableData(data || [])}
             />
         </Container>
     </Fragment>

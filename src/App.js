@@ -6,6 +6,7 @@ import {
   Routes
 } from 'react-router-dom';
 import './App.css';
+import { GlobalProvider } from './context/GlobalState'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import  Employee from './views/employee';
@@ -17,6 +18,7 @@ function App () {
   const [setActiveClick] = useState(false);
 
   return (
+    <GlobalProvider>
       <Router>
         <Sidebar active={setActiveClick} />
         <Navbar />
@@ -34,6 +36,7 @@ function App () {
           />
         </Routes>
       </Router>
+    </GlobalProvider>
   );
 }
 
