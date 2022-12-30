@@ -6,6 +6,7 @@ import {
   Routes
 } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { GlobalProvider } from './context/GlobalState'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';

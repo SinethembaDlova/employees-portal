@@ -6,7 +6,7 @@ const URL = endpoint => {
   return default_endpoint || endpoint;
 }
 
-const createEmployee = async (body) => {
+const postEmployee = async (body) => {
   const path = `${URL()}/employees`;
 
   try {
@@ -48,7 +48,7 @@ const getEmployee = async(id) => {
 }
 
 const updateEmployee = async(id, body) => {
-  const path = `${URL()}/employees`;
+  const path = `${URL()}/employees${id}`;
 
   try {
     const results = await axios.update(path, body);
@@ -58,7 +58,7 @@ const updateEmployee = async(id, body) => {
   }
 }
 
-const deleteEmployees = async (id) => {
+const deleteEmployee = async (id) => {
 	const path = `${URL()}/employees/${id}`;
 
 	try {
@@ -73,4 +73,4 @@ const deleteEmployees = async (id) => {
 	} 
 }
 
-export { createEmployee, getEmployees, getEmployee, updateEmployee, deleteEmployees}
+export { postEmployee, getEmployees, getEmployee, updateEmployee, deleteEmployee}
