@@ -21,8 +21,8 @@ function App () {
   return (
     <GlobalProvider>
       <Router>
-        <Sidebar active={setActiveClick} />
         <Navbar />
+        <Sidebar active={setActiveClick} />
         <Routes>
           <Route exact path="/" element={<Navigate to="/employees" replace />} />
           <Route

@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { GlobalContext } from '../../context/GlobalState';
 import Container from '../../components/Container';
@@ -14,12 +15,13 @@ const Employees = () => {
       index: index + 1,
       first_name: item.first_name,
       last_name: item.last_name,
+      email: item.email,
       contact_number: item.contact_number,
       actions: 
-        <>
-          <Button size="sm" color="primary" href={`/employees/${item._id}`}>View</Button> &nbsp;
-          <Button size="sm" color="danger" >Delete</Button>
-        </>      
+        <Link to={`/employees/${item._id}`}>
+          View Employee
+        </Link>
+      
     }));
   };
 
@@ -27,11 +29,13 @@ const Employees = () => {
     <Fragment>
         <Container>
             <h1>Employees</h1>
+            <Button>Add New Employee</Button>
             <Table
               columnNames={[
                 '#',
                 'First Name',
                 'Last Name',
+                'Email',
                 'Contact Number',
                 'Actions'
               ]}

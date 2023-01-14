@@ -6,71 +6,35 @@ const URL = endpoint => {
   return default_endpoint || endpoint;
 }
 
-const postEmployee = async (body) => {
+const createEmployee = async (body) => {
   const path = `${URL()}/employees`;
-
-  try {
-    const results = await axios.post(path, body);
-    return results?.data?.data;
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-const getEmployees = async () => {
-  const path = `${URL()}/employees`;
-	
-  try {
-    const results = await axios.get(path, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    return results?.data?.data;
-  } catch (error) {
-    throw new Error(error);
-  }
+  const results = await axios.post(path, body);
+  return results?.data;
 }
 
-const getEmployee = async(id) => {
+const readEmployees = async () => {
+  const path = `${URL()}/employees`;
+  const results = await axios.get(path);
+  return results?.data;
+  
+}
+
+const readEmployee = async(id) => {
 	const path = `${URL()}/employees/${id}`;
-
-	try {
-		const results = await axios.get(path, {
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-		return results?.data?.data;
-	} catch (error) {
-		throw new Error(error);
-	}
-    
+	const results = await axios.get(path);
+	return results?.data;
 }
 
 const updateEmployee = async(id, body) => {
   const path = `${URL()}/employees${id}`;
-
-  try {
-    const results = await axios.update(path, body);
-    return results?.data?.data;
-  } catch (error) {
-    throw new Error(error);
-  }
+  const results = await axios.update(path, body);
+  return results?.data;
 }
 
 const deleteEmployee = async (id) => {
 	const path = `${URL()}/employees/${id}`;
-
-	try {
-		const res = await axios.delete(path, {
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-		return res;
-	} catch (error) {
-		throw new Error(error);
-	} 
+	const res = await axios.delete(path);
+	return res?.data;
 }
 
-export { postEmployee, getEmployees, getEmployee, updateEmployee, deleteEmployee}
+export { createEmployee, readEmployees, readEmployee, updateEmployee, deleteEmployee } 

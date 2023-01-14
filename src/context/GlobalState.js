@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 // import AppReducer  from './AppReducer';
-import { getEmployees } from '../api'
+import { readEmployees, deleteEmployee } from '../api'
 
 
 
@@ -12,7 +12,7 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     updateIsLoading(true);
-    getEmployees().then((results) =>{
+    readEmployees().then((results) =>{
       updateEmployees(results)
     })
     updateIsLoading(false);
@@ -31,21 +31,18 @@ const GlobalProvider = ({ children }) => {
   //     payload: employee
   //   })
   // }
-  // const deleteEmployee = (id) => {
-  //   dispatch({
-  //     type: 'DELETE_EMPLOYEE',
-  //     payload: id
-  //   })
-  // }
+  const deleteEmployee = (id) => {
+    deleteEmployee(id)
+  }
 
 
   return (
     <GlobalContext.Provider value={{
       employees,
-      isLoading
+      isLoading,
+      deleteEmployee
       // createEmployee,
       // updateEmployee,
-      // deleteEmployee
     }}>
       {children}
     </GlobalContext.Provider>
