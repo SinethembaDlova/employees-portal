@@ -9,32 +9,32 @@ const URL = endpoint => {
 const createEmployee = async (body) => {
   const path = `${URL()}/employees`;
   const results = await axios.post(path, body);
-  return results?.data;
+  return results;
 }
 
 const readEmployees = async () => {
   const path = `${URL()}/employees`;
   const results = await axios.get(path);
-  return results?.data;
+  return results;
   
 }
 
 const readEmployee = async(id) => {
 	const path = `${URL()}/employees/${id}`;
 	const results = await axios.get(path);
-	return results?.data;
+	return results;
 }
 
 const updateEmployee = async(id, body) => {
   const path = `${URL()}/employees${id}`;
   const results = await axios.update(path, body);
-  return results?.data;
+  return results;
 }
 
 const deleteEmployee = async (id) => {
 	const path = `${URL()}/employees/${id}`;
-	const res = await axios.delete(path);
-	return res?.data;
+	const results = await axios.delete(path);
+	return results;
 }
 
 export { createEmployee, readEmployees, readEmployee, updateEmployee, deleteEmployee } 

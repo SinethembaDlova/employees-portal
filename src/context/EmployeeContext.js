@@ -1,37 +1,67 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { readEmployees, deleteEmployee } from '../api'
-
-
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createEmployee, readEmployees, readEmployee, updateEmployee as putEmployee, deleteEmployee } from '../api'
 
 const EmployeeContext = createContext();
 
+export const useEmployees = () => {
+  const context = useContext(EmployeeContext);
+  if (!context) throw new Error("Post Provider is missing");
+  return context;
+};
+
 const EmployeeProvider = ({ children }) => {
-  const [employees, updateEmployees] = useState([]);
-  const [isLoading, updateIsLoading] = useState(false)
+  const [employees, setEmployees] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    updateIsLoading(true);
-    readEmployees().then((results) =>{
-      updateEmployees(results)
-    })
-    updateIsLoading(false);
-  }, [])
+    (async () => {
+      setIsLoading(true);
+      const results = await readEmployees();
+      setEmployees(results?.data);
+      setIsLoading(false);
+    })();
+  }, []);
 
-  // const createEmployee = (employee) => {
-  //   dispatch({
-  //     type: 'CREATE_EMPLOYEE',
-  //     payload: employee
-  //   })
-  // }
+  const addEmployee = async (employee) => {
+    try {
+      setIsLoading(true);
+      const results = await createEmployee(employee);
+      setEmployees([...employees, results?.data]);
+      return setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  // const updateEmployee = (employee) => {
-  //   dispatch({
-  //     type: 'UPDATE_EMPLOYEE',
-  //     payload: employee
-  //   })
-  // }
-  const deleteEmployee = (id) => {
-    deleteEmployee(id)
+  const getEmployee = async (id) => {
+    try {
+      setIsLoading(true);
+      const results = await readEmployee(id);
+      setIsLoading(false)
+      return results?.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateEmployee = async (id, employee) => {
+    try {
+      setIsLoading(true);
+      const results = await putEmployee(id, employee);
+      setEmployees(employees.map((employee) => (employee._id === id ? results.data : employee)));
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeEmployee = async (id) => {
+    setIsLoading(true);
+    const results = await deleteEmployee(id)
+    if (results.status === 204) {
+      setEmployees(employees.filter((employee) => employee._id !== id));
+    }
+    setIsLoading(false);
   }
 
 
@@ -39,9 +69,10 @@ const EmployeeProvider = ({ children }) => {
     <EmployeeContext.Provider value={{
       employees,
       isLoading,
-      deleteEmployee
-      // createEmployee,
-      // updateEmployee,
+      addEmployee,
+      getEmployee,
+      removeEmployee,
+      updateEmployee,
     }}>
       {children}
     </EmployeeContext.Provider>
