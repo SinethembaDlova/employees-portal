@@ -1,14 +1,14 @@
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { GlobalContext } from '../../context/GlobalState';
+import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import Table from '../../components/Table';
 
 
 const Employees = () => {
 
-  const { employees } = useContext(GlobalContext)
+  const { employees } = useContext(EmployeeContext)
 
   const tableData = data => {
     return data.map((item, index) => ({

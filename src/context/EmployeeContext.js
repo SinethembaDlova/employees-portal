@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
-// import AppReducer  from './AppReducer';
 import { readEmployees, deleteEmployee } from '../api'
 
 
 
-const GlobalContext = createContext();
+const EmployeeContext = createContext();
 
-const GlobalProvider = ({ children }) => {
+const EmployeeProvider = ({ children }) => {
   const [employees, updateEmployees] = useState([]);
   const [isLoading, updateIsLoading] = useState(false)
 
@@ -37,7 +36,7 @@ const GlobalProvider = ({ children }) => {
 
 
   return (
-    <GlobalContext.Provider value={{
+    <EmployeeContext.Provider value={{
       employees,
       isLoading,
       deleteEmployee
@@ -45,8 +44,8 @@ const GlobalProvider = ({ children }) => {
       // updateEmployee,
     }}>
       {children}
-    </GlobalContext.Provider>
+    </EmployeeContext.Provider>
   )
 }
 
-export { GlobalContext, GlobalProvider };
+export { EmployeeContext, EmployeeProvider };

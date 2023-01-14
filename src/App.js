@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Navigate,
@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { GlobalProvider } from './context/GlobalState'
+import { EmployeeProvider } from './context/EmployeeContext'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import  Employee from './views/employee';
@@ -15,14 +15,11 @@ import  Employees from './views/employees';
 
 
 function App () {
-
-  const [setActiveClick] = useState(false);
-
   return (
-    <GlobalProvider>
+    <EmployeeProvider>
       <Router>
         <Navbar />
-        <Sidebar active={setActiveClick} />
+        <Sidebar />
         <Routes>
           <Route exact path="/" element={<Navigate to="/employees" replace />} />
           <Route
@@ -37,7 +34,7 @@ function App () {
           />
         </Routes>
       </Router>
-    </GlobalProvider>
+    </EmployeeProvider>
   );
 }
 
