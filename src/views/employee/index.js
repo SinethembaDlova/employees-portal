@@ -1,8 +1,45 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import { Link, useParams } from "react-router-dom";
+import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const Employee = () => {
+
+  const { getEmployee } = useContext(EmployeeContext);
+  const params = useParams();
+  const [employee, setEmployee] = useState({
+      first_name: '',
+      last_name: '',
+      contact_number: '',
+      email: '',
+      dob: '',
+      address: {
+        street_address: '',
+        city: '',
+        postal_code: '',
+        country: ''
+      },
+      skills: []
+  });
+
+  
+  useEffect(() => {
+    (async () => {
+      if (params.id) {
+        const employee = await getEmployee(params.id);
+        setEmployee({
+          first_name: employee.first_name,
+          last_name: employee.last_name,
+          contact_number: employee.contact_number,
+          email: employee.email,
+          dob: employee.dob,
+          address: employee.address,
+          skills: employee.skills
+        });
+      }
+    })();
+  }, [params.id]);
 
   return (
     <Fragment>
