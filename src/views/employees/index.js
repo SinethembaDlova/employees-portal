@@ -1,9 +1,10 @@
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import Table from '../../components/Table';
+import { Row, Col, Button } from 'reactstrap';
+
 
 
 const Employees = () => {
@@ -28,19 +29,27 @@ const Employees = () => {
   return (
     <Fragment>
         <Container>
-            <h1>Employees</h1>
-            <Button>Add New Employee</Button>
-            <Table
-              columnNames={[
-                '#',
-                'First Name',
-                'Last Name',
-                'Email',
-                'Contact Number',
-                'Actions'
-              ]}
-              data={tableData(employees)}
-            />
+          <Row>
+            <Col md={ 6 }>
+              <h1>Employees</h1>
+            </Col>
+            <Col md={ 6 }>
+              <Button size='lg' color="primary" className="float-right">
+                Add New Employee
+              </Button>
+            </Col>
+          </Row>
+          <Table
+            columnNames={[
+              '#',
+              'First Name',
+              'Last Name',
+              'Email',
+              'Contact Number',
+              'Actions'
+            ]}
+            data={tableData(employees)}
+          />
         </Container>
     </Fragment>
   );
