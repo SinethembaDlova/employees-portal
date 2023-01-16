@@ -40,9 +40,9 @@ const Employees = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={ 12 } className="flex flex-col justify-center items-center">
-              <Table
-              columnNames={[
+            <Col md={ 12 } className="flex flex-col justify-center items-center mt-4">
+              { employees.length > 0 && <Table
+                columnNames={[
                   '#',
                   'First Name',
                   'Last Name',
@@ -51,7 +51,7 @@ const Employees = () => {
                   'Actions'
                 ]}
                 data={tableData(employees)}
-              />
+              />}
             </Col>
           </Row>
         </Container>

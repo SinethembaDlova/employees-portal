@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  margin: 30px;
   font-size: 1.1em;
   min-width: 500px;
   align-items: center;
