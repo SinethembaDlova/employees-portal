@@ -22,6 +22,7 @@ const Employee = () => {
       },
       skills: []
   });
+  const [isDisabled, setIsDisabled] = useState(true);
 
   
   useEffect(() => {
@@ -44,8 +45,6 @@ const Employee = () => {
   return (
     <Fragment>
         <Container>
-            <h1>Employee</h1>
-            <br />
             <Form>
               <Button size='lg' color="primary" className="float-right">
                 Update
@@ -53,6 +52,21 @@ const Employee = () => {
               <Button size='lg' color="danger" className="float-right">
                 Delete
               </Button>
+
+              <h1>Employee</h1>
+
+              <FormGroup switch disabled={ isDisabled } >
+                  <Input 
+                    type="switch" 
+                    size="md"
+                    checked={ isDisabled }
+                    onClick={() => {
+                      setIsDisabled(!isDisabled);
+                    }} 
+                  />
+                  <Label check>{ isDisabled ? 'Unlock form' : 'Lock form' }</Label>
+              </FormGroup>
+              <br />
               <h5>Basic Information</h5>
               <Row>
                 <Col md={6}>
@@ -63,6 +77,8 @@ const Employee = () => {
                     <Input
                       id="first_name"
                       name="first_name"
+                      value={ employee?.first_name }
+                      disabled={ isDisabled }
                     />
                   </FormGroup>
               </Col>
@@ -74,6 +90,8 @@ const Employee = () => {
                   <Input
                     id="last_name"
                     name="last_name"
+                    value={ employee?.last_name }
+                    disabled={ isDisabled }
                   />
                 </FormGroup>
               </Col>
@@ -87,6 +105,8 @@ const Employee = () => {
                     <Input
                       id="contact_number"
                       name="contact_number"
+                      value={ employee?.contact_number }
+                      disabled={ isDisabled }
                     />
                   </FormGroup>
               </Col>
@@ -98,6 +118,8 @@ const Employee = () => {
                   <Input
                     id="email"
                     name="email"
+                    value={ employee?.email }
+                    disabled={ isDisabled }
                   />
                 </FormGroup>
               </Col>
@@ -112,6 +134,8 @@ const Employee = () => {
                       id="dob"
                       name="dob"
                       type="date"
+                      value={ employee?.email }
+                      disabled={ isDisabled }
                     />
                   </FormGroup>
               </Col>
@@ -127,6 +151,8 @@ const Employee = () => {
                     <Input
                       id="street_address"
                       name="street_address"
+                      value={ employee?.address?.street_address }
+                      disabled={ isDisabled }
                     />
                   </FormGroup>
               </Col>
@@ -138,6 +164,8 @@ const Employee = () => {
                   <Input
                     id="city"
                     name="city"
+                    value={ employee?.address?.city }
+                    disabled={ isDisabled }
                   />
                 </FormGroup>
               </Col>
@@ -151,6 +179,8 @@ const Employee = () => {
                     <Input
                       id="postal_code"
                       name="postal_code"
+                      value={ employee?.address?.postal_code }
+                      disabled={ isDisabled }
                     />
                   </FormGroup>
               </Col>
@@ -162,6 +192,8 @@ const Employee = () => {
                   <Input
                     id="country"
                     name="country"
+                    value={ employee?.address?.country }
+                    disabled={ isDisabled }
                   />
                 </FormGroup>
               </Col>
