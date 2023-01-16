@@ -46,26 +46,35 @@ const Employee = () => {
     <Fragment>
         <Container>
             <Form>
-              <Button size='lg' color="primary" className="float-right">
-                Update
-              </Button> &nbsp;
-              <Button size='lg' color="danger" className="float-right">
-                Delete
-              </Button>
+              <Row>
+                <Col md={ 6 }>
+                  <h1>Employee</h1>
+                </Col>
+                <Col md={ 6 }>
+                  <Button size='lg' color="danger" outline className="float-right">
+                    Delete Employee
+                  </Button>
+                </Col>
+                
+              </Row>
 
-              <h1>Employee</h1>
-
-              <FormGroup switch disabled={ isDisabled } >
-                  <Input 
-                    type="switch" 
-                    size="md"
-                    checked={ isDisabled }
-                    onClick={() => {
+              <br />
+              <Row>
+                <Col md={12}>
+                  <FormGroup className="float-right" switch disabled={ isDisabled } >
+                    <Input 
+                      type="switch" 
+                      size="md"
+                      checked={ isDisabled }
+                      onClick={() => {
                       setIsDisabled(!isDisabled);
-                    }} 
-                  />
-                  <Label check>{ isDisabled ? 'Unlock form' : 'Lock form' }</Label>
-              </FormGroup>
+                      }} 
+                    />
+                    <Label check>{ isDisabled ? 'Unlock form' : 'Lock form' }</Label>
+                  </FormGroup> 
+                </Col>
+
+              </Row>
               <br />
               <h5>Basic Information</h5>
               <Row>
@@ -200,6 +209,9 @@ const Employee = () => {
             </Row>
             <br />
             <h5>Skills</h5>
+            <Button size='lg' color="primary" className="float-right">
+                Update
+            </Button> &nbsp;
           </Form>
         </Container>
     </Fragment>
