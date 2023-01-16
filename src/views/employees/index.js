@@ -39,17 +39,21 @@ const Employees = () => {
               </Button>
             </Col>
           </Row>
-          <Table
-            columnNames={[
-              '#',
-              'First Name',
-              'Last Name',
-              'Email',
-              'Contact Number',
-              'Actions'
-            ]}
-            data={tableData(employees)}
-          />
+          <Row>
+            <Col md={ 12 } className="flex flex-col justify-center items-center">
+              <Table
+              columnNames={[
+                  '#',
+                  'First Name',
+                  'Last Name',
+                  'Email',
+                  'Contact Number',
+                  'Actions'
+                ]}
+                data={tableData(employees)}
+              />
+            </Col>
+          </Row>
         </Container>
     </Fragment>
   );
