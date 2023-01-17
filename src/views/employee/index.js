@@ -1,13 +1,14 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const Employee = () => {
 
-  const { getEmployee } = useContext(EmployeeContext);
+  const { getEmployee, updateEmployee, removeEmployee, } = useContext(EmployeeContext);
   const params = useParams();
+  const navigate = useNavigate()
   const [employee, setEmployee] = useState({
       first_name: '',
       last_name: '',
@@ -23,6 +24,14 @@ const Employee = () => {
       skills: []
   });
   const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleDeleting = async () => {
+    if (params.id) {
+      await removeEmployee(params.id);
+      navigate('/employees')
+    }
+
+  }
 
   
   useEffect(() => {
@@ -40,7 +49,7 @@ const Employee = () => {
         });
       }
     })();
-  }, [params.id]);
+  }, [params.id, getEmployee]);
 
   return (
     <Fragment>
@@ -51,11 +60,10 @@ const Employee = () => {
                   <h1>Employee</h1>
                 </Col>
                 <Col md={ 6 }>
-                  <Button size='lg' color="danger" outline className="float-right">
+                  <Button size='lg' color="danger" outline className="float-right" onClick={ handleDeleting }>
                     Delete Employee
                   </Button>
                 </Col>
-                
               </Row>
 
               <br />

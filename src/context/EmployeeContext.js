@@ -58,7 +58,7 @@ const EmployeeProvider = ({ children }) => {
   const removeEmployee = async (id) => {
     setIsLoading(true);
     const results = await deleteEmployee(id)
-    if (results.status === 204) {
+    if (results.status === 200) {
       setEmployees(employees.filter((employee) => employee._id !== id));
     }
     setIsLoading(false);
