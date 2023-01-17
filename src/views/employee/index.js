@@ -25,17 +25,23 @@ const Employee = () => {
   });
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const handleInputChange = ({ target }) => {
+    setEmployee({ ...employee, [target.name]: target.value });
+  };
+
+  const handleUpdating = async () => {
+    if (params.id) {
+      await updateEmployee(params.id, employee);
+      setIsDisabled(true);
+    }
+  }
+
   const handleDeleting = async () => {
     if (params.id) {
       await removeEmployee(params.id);
       navigate('/employees')
     }
   }
-
-  const handleInputChange = ({ target }) => {
-    setEmployee({ ...employee, [target.name]: target.value });
-  };
-
   
   useEffect(() => {
     (async () => {
@@ -229,7 +235,7 @@ const Employee = () => {
             </Row>
             <br />
             <h5>Skills</h5>
-            <Button size='lg' color="primary" className="float-right">
+            <Button size='lg' color="primary" className="float-right" onClick={ handleUpdating }>
                 Update
             </Button> &nbsp;
           </Form>

@@ -26,8 +26,8 @@ const readEmployee = async(id) => {
 }
 
 const updateEmployee = async(id, body) => {
-  const path = `${URL()}/employees${id}`;
-  const results = await axios.update(path, body);
+  const path = `${URL()}/employees/${id}`;
+  const results = await axios.put(path, body);
   return results;
 }
 
