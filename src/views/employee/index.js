@@ -30,8 +30,11 @@ const Employee = () => {
       await removeEmployee(params.id);
       navigate('/employees')
     }
-
   }
+
+  const handleInputChange = ({ target }) => {
+    setEmployee({ ...employee, [target.name]: target.value });
+  };
 
   
   useEffect(() => {
@@ -96,6 +99,7 @@ const Employee = () => {
                       name="first_name"
                       value={ employee?.first_name }
                       disabled={ isDisabled }
+                      onChange={ handleInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -109,6 +113,7 @@ const Employee = () => {
                     name="last_name"
                     value={ employee?.last_name }
                     disabled={ isDisabled }
+                    onChange={ handleInputChange }
                   />
                 </FormGroup>
               </Col>
@@ -124,6 +129,7 @@ const Employee = () => {
                       name="contact_number"
                       value={ employee?.contact_number }
                       disabled={ isDisabled }
+                      onChange={ handleInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -137,6 +143,7 @@ const Employee = () => {
                     name="email"
                     value={ employee?.email }
                     disabled={ isDisabled }
+                    onChange={ handleInputChange }
                   />
                 </FormGroup>
               </Col>
@@ -153,6 +160,7 @@ const Employee = () => {
                       type="date"
                       value={ employee?.email }
                       disabled={ isDisabled }
+                      onChange={ handleInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -170,6 +178,7 @@ const Employee = () => {
                       name="street_address"
                       value={ employee?.address?.street_address }
                       disabled={ isDisabled }
+                      onChange={ handleInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -183,6 +192,7 @@ const Employee = () => {
                     name="city"
                     value={ employee?.address?.city }
                     disabled={ isDisabled }
+                    onChange={ handleInputChange }
                   />
                 </FormGroup>
               </Col>
@@ -198,6 +208,7 @@ const Employee = () => {
                       name="postal_code"
                       value={ employee?.address?.postal_code }
                       disabled={ isDisabled }
+                      onChange={ handleInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -211,6 +222,7 @@ const Employee = () => {
                     name="country"
                     value={ employee?.address?.country }
                     disabled={ isDisabled }
+                    onChange={ handleInputChange }
                   />
                 </FormGroup>
               </Col>
