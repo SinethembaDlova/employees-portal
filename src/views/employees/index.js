@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import Table from '../../components/Table';
@@ -9,7 +9,8 @@ import { Row, Col, Button } from 'reactstrap';
 
 const Employees = () => {
 
-  const { employees } = useContext(EmployeeContext)
+  const { employees } = useContext(EmployeeContext);
+  const navigate = useNavigate();
 
   const tableData = data => {
     return data.map((item, index) => ({
@@ -34,7 +35,7 @@ const Employees = () => {
               <h1>Employees</h1>
             </Col>
             <Col md={ 6 }>
-              <Button size='lg' color="primary" className="float-right">
+              <Button size='lg' color="primary" className="float-right" onClick={ () => navigate('/employees/create') }>
                 Add New Employee
               </Button>
             </Col>
