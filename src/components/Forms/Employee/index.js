@@ -4,7 +4,7 @@ import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EmployeeForm = ({ data, isDisabled, handleSubmiting }) => {
 
-  const [employee, setEmployee] = useState(data);
+  const [employee, setEmployee] = useState({ data });
   const navigate = useNavigate()
 
   const handleInputChange = ({ target }) => {
@@ -13,7 +13,7 @@ const EmployeeForm = ({ data, isDisabled, handleSubmiting }) => {
 
   return (
     <Fragment>
-      <Form onSubmit={ handleSubmiting }>
+      <Form onSubmit={ handleSubmiting(employee) }>
         <h5>Basic Information</h5>
         <Row>
           <Col md={6}>
@@ -172,4 +172,3 @@ const EmployeeForm = ({ data, isDisabled, handleSubmiting }) => {
 };
 
 export default EmployeeForm;
-
