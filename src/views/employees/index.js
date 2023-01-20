@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
+import Loader from '../../components/Loader';
 import Table from '../../components/Table';
 import { Row, Col, Button } from 'reactstrap';
 
@@ -9,7 +10,7 @@ import { Row, Col, Button } from 'reactstrap';
 
 const Employees = () => {
 
-  const { employees } = useContext(EmployeeContext);
+  const { employees, isLoading } = useContext(EmployeeContext);
   const navigate = useNavigate();
 
   const tableData = data => {
@@ -26,6 +27,8 @@ const Employees = () => {
       
     }));
   };
+
+  if (isLoading) <Loader /> 
 
   return (
     <Fragment>

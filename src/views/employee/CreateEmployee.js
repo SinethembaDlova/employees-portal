@@ -2,11 +2,12 @@ import React, { Fragment, useContext, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
+import Loader from '../../components/Loader';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const CreateEmployee = () => {
 
-  const { addEmployee } = useContext(EmployeeContext);
+  const { addEmployee, isLoading } = useContext(EmployeeContext);
   const params = useParams();
   const navigate = useNavigate()
   const [employee, setEmployee] = useState({
@@ -41,6 +42,8 @@ const CreateEmployee = () => {
       navigate(`/employees/${ createdEmployee._id}`);
     }
   }
+
+  if (isLoading) <Loader /> 
 
   return (
     <Fragment>

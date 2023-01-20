@@ -2,11 +2,12 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
+import Loader from '../../components/Loader';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const Employee = () => {
 
-  const { getEmployee, updateEmployee, removeEmployee, } = useContext(EmployeeContext);
+  const { getEmployee, updateEmployee, removeEmployee, isLoading } = useContext(EmployeeContext);
   const params = useParams();
   const navigate = useNavigate()
   const [employee, setEmployee] = useState({
@@ -39,7 +40,7 @@ const Employee = () => {
   const handleDeleting = async () => {
     if (params.id) {
       await removeEmployee(params.id);
-      navigate('/employees')
+      navigate('/employees');
     }
   }
   
@@ -59,6 +60,8 @@ const Employee = () => {
       }
     })();
   }, [params.id, getEmployee]);
+  
+  if (isLoading) <Loader /> 
 
   return (
     <Fragment>
