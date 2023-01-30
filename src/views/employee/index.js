@@ -27,7 +27,8 @@ const Employee = () => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   const handleInputChange = ({ target }) => {
-    setEmployee({ ...employee, [target.name]: target.value });
+    const {name, value} = target;
+    setEmployee({ ...employee, [name]: value });
   };
 
   const handleUpdating = async () => {
@@ -61,7 +62,7 @@ const Employee = () => {
     })();
   }, [params.id, getEmployee]);
   
-  if (isLoading) <Loader /> 
+  if (isLoading) return <Loader /> 
 
   return (
     <Fragment>
