@@ -6,4 +6,13 @@ const convertDateObjectToString = (date) => {
     return `${day}/${month}/${year}`;
 }
 
-export { convertDateObjectToString }
+const convertDateStringToDateObject = (dateString) =>  {
+    const dateComponents = dateString.split("/");
+    const day = parseInt(dateComponents[0], 10);
+    const month = parseInt(dateComponents[1], 10) - 1;
+    const year = parseInt(dateComponents[2], 10);
+  
+    return new Date(year, month, day);
+  }
+
+export { convertDateObjectToString, convertDateStringToDateObject }
