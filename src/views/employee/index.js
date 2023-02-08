@@ -56,6 +56,18 @@ const Employee = () => {
 
   const handleUpdating = async () => {
     if (params.id) {
+      setErrors({
+        first_name: employee.first_name.length === 0,
+        last_name: employee.last_name.length === 0,
+        contact_number: employee.contact_number.length === 0,
+        email: employee.email.length === 0,
+        dob: employee.dob.length === 0,
+        street_address: employee.address.street_address.length === 0,
+        city: employee.address.city.length === 0,
+        postal_code: employee.address.postal_code.length === 0,
+        country: employee.address.country.length === 0
+      });
+
       await updateEmployee(params.id, employee);
       setIsDisabled(true);
     }
