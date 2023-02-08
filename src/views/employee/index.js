@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { EmployeeContext } from '../../context/EmployeeContext';
+import { convertDateStringToDateObject } from '../../utils/date'
 import Container from '../../components/Container';
 import Loader from '../../components/Loader';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
@@ -29,6 +30,17 @@ const Employee = () => {
   const handleInputChange = ({ target }) => {
     const {name, value} = target;
     setEmployee({ ...employee, [name]: value });
+  };
+
+  const handleAddressInputChange = ({ target }) => {
+    const {name, value} = target;
+    setEmployee({
+      ...employee,
+      address: {
+        ...employee.address,
+        [name]: value
+      }
+    });
   };
 
   const handleUpdating = async () => {
@@ -168,7 +180,7 @@ const Employee = () => {
                       id="dob"
                       name="dob"
                       type="date"
-                      value={ employee?.email }
+                      value={ convertDateStringToDateObject(employee?.dob) }
                       disabled={ isDisabled }
                       onChange={ handleInputChange }
                     />
@@ -188,7 +200,7 @@ const Employee = () => {
                       name="street_address"
                       value={ employee?.address?.street_address }
                       disabled={ isDisabled }
-                      onChange={ handleInputChange }
+                      onChange={ handleAddressInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -202,7 +214,7 @@ const Employee = () => {
                     name="city"
                     value={ employee?.address?.city }
                     disabled={ isDisabled }
-                    onChange={ handleInputChange }
+                    onChange={ handleAddressInputChange }
                   />
                 </FormGroup>
               </Col>
@@ -218,7 +230,7 @@ const Employee = () => {
                       name="postal_code"
                       value={ employee?.address?.postal_code }
                       disabled={ isDisabled }
-                      onChange={ handleInputChange }
+                      onChange={ handleAddressInputChange }
                     />
                   </FormGroup>
               </Col>
@@ -232,7 +244,7 @@ const Employee = () => {
                     name="country"
                     value={ employee?.address?.country }
                     disabled={ isDisabled }
-                    onChange={ handleInputChange }
+                    onChange={ handleAddressInputChange }
                   />
                 </FormGroup>
               </Col>

@@ -12,7 +12,7 @@ const convertDateStringToDateObject = (dateString) =>  {
     const month = parseInt(dateComponents[1], 10) - 1;
     const year = parseInt(dateComponents[2], 10);
   
-    return new Date(year, month, day);
+    return `${month}/${day}/${year}`;
   }
 
 export { convertDateObjectToString, convertDateStringToDateObject }
