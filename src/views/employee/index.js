@@ -67,9 +67,13 @@ const Employee = () => {
         postal_code: employee.address.postal_code.length === 0,
         country: employee.address.country.length === 0
       });
+      
+      const isFormValid = Object.values(errors).every(error => error === false);
 
-      await updateEmployee(params.id, employee);
-      setIsDisabled(true);
+      if (isFormValid) {
+          await updateEmployee(params.id, employee);
+          setIsDisabled(true);
+      }
     }
   }
 
