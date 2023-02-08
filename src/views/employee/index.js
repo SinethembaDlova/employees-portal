@@ -25,6 +25,17 @@ const Employee = () => {
       },
       skills: []
   });
+  const [errors, setErrors] = useState({
+    first_name: false,
+    last_name: false,
+    contact_number: false,
+    email: false,
+    dob: false,
+    street_address: false,
+    city: false,
+    postal_code: false,
+    country: false
+  });
   const [isDisabled, setIsDisabled] = useState(true);
 
   const handleInputChange = ({ target }) => {
