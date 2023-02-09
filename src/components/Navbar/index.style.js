@@ -14,6 +14,7 @@ const NavbarContainer = styled.nav`
   font-weight: bold;
   border-radius: 2px;
   margin-bottom: 1%;
+  position: fixed;
 `;
 
 const LeftContainer = styled.div`
