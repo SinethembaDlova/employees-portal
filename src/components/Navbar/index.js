@@ -6,17 +6,16 @@ import {
   NavbarLink,
 } from './index.style';
 
-const Navbar = () => {
-
+function Navbar() {
   return (
     <NavbarContainer>
       <NavbarInnerContainer>
         <LeftContainer>
-        <NavbarLink to="/"> Employees Portal</NavbarLink>
+          <NavbarLink to="/"> Employees Portal</NavbarLink>
         </LeftContainer>
       </NavbarInnerContainer>
     </NavbarContainer>
   );
-};
+}
 
 export default Navbar;

@@ -4,10 +4,10 @@ import {
   NotificationContainer,
   IconTextWrapper,
   IconWrapper,
-  TextWrapper
+  TextWrapper,
 } from './index.style';
 
-const Alert = ({ variant, message, noBorder, ...restProps }) => {
+function Alert({ variant, message, noBorder, ...restProps }) {
   return (
     <NotificationContainer
       variant={variant}
@@ -23,9 +23,7 @@ const Alert = ({ variant, message, noBorder, ...restProps }) => {
           {variant === VARIANT.WARNING && (
             <i className="material-icons">warning</i>
           )}
-          {variant === VARIANT.ERROR && (
-            <i className="material-icons">error</i>
-          )}
+          {variant === VARIANT.ERROR && <i className="material-icons">error</i>}
         </IconWrapper>
         <TextWrapper>
           <div>{message}</div>
@@ -33,6 +31,6 @@ const Alert = ({ variant, message, noBorder, ...restProps }) => {
       </IconTextWrapper>
     </NotificationContainer>
   );
-};
+}
 
 export default Alert;

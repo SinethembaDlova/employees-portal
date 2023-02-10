@@ -8,7 +8,7 @@ const LoaderOverlay = styled.div`
   align-items: center;
 `;
 
- const LoaderContainer = styled.div`
+const LoaderContainer = styled.div`
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -29,4 +29,4 @@ const LoaderOverlay = styled.div`
   }
 `;
 
-export { LoaderOverlay, LoaderContainer }
+export { LoaderOverlay, LoaderContainer };

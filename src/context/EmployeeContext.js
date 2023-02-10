@@ -1,17 +1,23 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { createEmployee, readEmployees, readEmployee, updateEmployee as putEmployee, deleteEmployee } from '../api'
+import {
+  createEmployee,
+  readEmployees,
+  readEmployee,
+  updateEmployee as putEmployee,
+  deleteEmployee,
+} from '../api';
 
 const EmployeeContext = createContext();
 
 export const useEmployees = () => {
   const context = useContext(EmployeeContext);
-  if (!context) throw new Error("Post Provider is missing");
+  if (!context) throw new Error('Post Provider is missing');
   return context;
 };
 
-const EmployeeProvider = ({ children }) => {
+function EmployeeProvider({ children }) {
   const [employees, setEmployees] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -31,13 +37,13 @@ const EmployeeProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const getEmployee = async (id) => {
     try {
       setIsLoading(true);
       const results = await readEmployee(id);
-      setIsLoading(false)
+      setIsLoading(false);
       return results?.data;
     } catch (error) {
       console.error(error);
@@ -48,7 +54,11 @@ const EmployeeProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const results = await putEmployee(id, employee);
-      setEmployees(employees.map((employee) => (employee._id === id ? results.data : employee)));
+      setEmployees(
+        employees.map((employee) =>
+          employee._id === id ? results.data : employee
+        )
+      );
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -57,26 +67,27 @@ const EmployeeProvider = ({ children }) => {
 
   const removeEmployee = async (id) => {
     setIsLoading(true);
-    const results = await deleteEmployee(id)
+    const results = await deleteEmployee(id);
     if (results.status === 200) {
       setEmployees(employees.filter((employee) => employee._id !== id));
     }
     setIsLoading(false);
-  }
-
+  };
 
   return (
-    <EmployeeContext.Provider value={{
-      employees,
-      isLoading,
-      addEmployee,
-      getEmployee,
-      removeEmployee,
-      updateEmployee,
-    }}>
+    <EmployeeContext.Provider
+      value={{
+        employees,
+        isLoading,
+        addEmployee,
+        getEmployee,
+        removeEmployee,
+        updateEmployee,
+      }}
+    >
       {children}
     </EmployeeContext.Provider>
-  )
+  );
 }
 
 export { EmployeeContext, EmployeeProvider };

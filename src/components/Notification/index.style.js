@@ -5,8 +5,8 @@ const NotificationContainer = styled.div`
   max-width: 350px;
   display: flex;
   padding: 10px 20px;
-  border-radius: ${props => (props.noBorder ? '0px' : '10px')};
-  ${props => {
+  border-radius: ${(props) => (props.noBorder ? '0px' : '10px')};
+  ${(props) => {
     if (props.variant === 'success') {
       return css`
         background: green;
@@ -41,4 +41,4 @@ const TextWrapper = styled.div`
   display: flex;
 `;
 
-export { NotificationContainer,  IconTextWrapper, IconWrapper,  TextWrapper }
+export { NotificationContainer, IconTextWrapper, IconWrapper, TextWrapper };

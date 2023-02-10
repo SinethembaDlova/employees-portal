@@ -40,9 +40,4 @@ const NavbarLink = styled(Link)`
   }
 `;
 
-export { 
-  NavbarContainer, 
-  LeftContainer,
-  NavbarInnerContainer,
-  NavbarLink
-}
+export { NavbarContainer, LeftContainer, NavbarInnerContainer, NavbarLink };

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import {
   SidebarContainer,
   SidebarMenuContainer,
-  StyledNavLink
+  StyledNavLink,
 } from './index.style';
 
-const Sidebar = props => {
-  var items = ['Employees'];
-  var pages = ['employees'];
-  var icons = ['group'];
+function Sidebar(props) {
+  const items = ['Employees'];
+  const pages = ['employees'];
+  const icons = ['group'];
   const [isActive, setActive] = useState(null);
 
-  const toggleClass = index => {
+  const toggleClass = (index) => {
     setActive(index);
   };
 
@@ -19,8 +19,8 @@ const Sidebar = props => {
     <SidebarContainer act={props.toggle}>
       <SidebarMenuContainer>
         <div>
-          {items.map(function (item, index) {
-            var strClass = '';
+          {items.map((item, index) => {
+            let strClass = '';
             if (isActive === index) {
               console.log(index);
               strClass = 'active';
@@ -29,7 +29,7 @@ const Sidebar = props => {
             }
             return (
               <StyledNavLink
-                to={'/' + pages[index]}
+                to={`/${pages[index]}`}
                 className={strClass}
                 key={index}
                 onClick={() => toggleClass(index)}
@@ -43,6 +43,6 @@ const Sidebar = props => {
       </SidebarMenuContainer>
     </SidebarContainer>
   );
-};
+}
 
 export default Sidebar;
