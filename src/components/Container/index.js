@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PageContainer from './index.style';
 
-function Container({ children }) {
+const Container = ({ children }) => {
   return <PageContainer> {children}</PageContainer>;
-}
+};
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Container;

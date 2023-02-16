@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   createEmployee,
   readEmployees,
@@ -54,11 +55,7 @@ function EmployeeProvider({ children }) {
     try {
       setIsLoading(true);
       const results = await putEmployee(id, employee);
-      setEmployees(
-        employees.map((employee) =>
-          employee._id === id ? results.data : employee
-        )
-      );
+      setEmployees(employees.map((employee) => (employee._id === id ? results.data : employee)));
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -83,11 +80,14 @@ function EmployeeProvider({ children }) {
         getEmployee,
         removeEmployee,
         updateEmployee,
-      }}
-    >
+      }}>
       {children}
     </EmployeeContext.Provider>
   );
 }
+
+EmployeeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { EmployeeContext, EmployeeProvider };

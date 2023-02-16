@@ -1,15 +1,16 @@
 {
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "parser": "babel-eslint",
-    "rules": {
-      "prettier/prettier": "error"
-    }
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "amd":  true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "react/no-unknown-property": ["error", { "ignore": ["index", "js", "jsx"] }]
   }
-  
-  
+}

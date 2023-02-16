@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  NavbarContainer,
-  LeftContainer,
-  NavbarInnerContainer,
-  NavbarLink,
-} from './index.style';
+import { NavbarContainer, LeftContainer, NavbarInnerContainer, NavbarLink } from './index.style';
 
-function Navbar() {
+const Navbar = () => {
   return (
     <NavbarContainer>
       <NavbarInnerContainer>
@@ -16,6 +11,6 @@ function Navbar() {
       </NavbarInnerContainer>
     </NavbarContainer>
   );
-}
+};
 
 export default Navbar;

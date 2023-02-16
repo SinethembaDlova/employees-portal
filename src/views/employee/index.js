@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
@@ -7,8 +7,7 @@ import Container from '../../components/Container';
 import Loader from '../../components/Loader';
 
 function Employee() {
-  const { getEmployee, updateEmployee, removeEmployee, isLoading } =
-    useContext(EmployeeContext);
+  const { getEmployee, updateEmployee, removeEmployee, isLoading } = useContext(EmployeeContext);
   const params = useParams();
   const navigate = useNavigate();
   const [employee, setEmployee] = useState({
@@ -68,9 +67,7 @@ function Employee() {
         country: employee.address.country.length === 0,
       });
 
-      const isFormValid = Object.values(errors).every(
-        (error) => error === false
-      );
+      const isFormValid = Object.values(errors).every((error) => error === false);
 
       if (isFormValid) {
         await updateEmployee(params.id, employee);
@@ -118,8 +115,7 @@ function Employee() {
               color="danger"
               outline
               className="float-right"
-              onClick={handleDeleting}
-            >
+              onClick={handleDeleting}>
               Delete Employee
             </Button>
           </Col>
@@ -265,12 +261,7 @@ function Employee() {
         </Row>
         <br />
         <h5>Skills</h5>
-        <Button
-          size="lg"
-          color="primary"
-          className="float-right"
-          onClick={handleUpdating}
-        >
+        <Button size="lg" color="primary" className="float-right" onClick={handleUpdating}>
           Update
         </Button>{' '}
         &nbsp;

@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
-function EmployeeForm({ data, isDisabled, handleSubmiting }) {
-  const [employee, setEmployee] = useState({ data });
+const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
+  const [employee, setEmployee] = useState({ initialEmployee });
   const navigate = useNavigate();
 
   const handleInputChange = ({ target }) => {
@@ -11,7 +12,7 @@ function EmployeeForm({ data, isDisabled, handleSubmiting }) {
   };
 
   return (
-    <Form onSubmit={handleSubmiting(employee)}>
+    <Form onSubmit={onSubmit(employee)}>
       <h5>Basic Information</h5>
       <Row>
         <Col md={6}>
@@ -142,16 +143,18 @@ function EmployeeForm({ data, isDisabled, handleSubmiting }) {
         <Button size="lg" color="primary" className="float-right" type="submit">
           Save
         </Button>
-        <Button
-          size="lg"
-          className="float-right mr-2"
-          onClick={() => navigate(-1)}
-        >
+        <Button size="lg" className="float-right mr-2" onClick={() => navigate(-1)}>
           Cancel
         </Button>
       </div>
     </Form>
   );
-}
+};
+
+EmployeeForm.propTypes = {
+  employee: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default EmployeeForm;

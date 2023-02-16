@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
@@ -33,8 +33,7 @@ function Employees() {
             size="lg"
             color="primary"
             className="float-right"
-            onClick={() => navigate('/employees/create')}
-          >
+            onClick={() => navigate('/employees/create')}>
             Add New Employee
           </Button>
         </Col>
@@ -63,14 +62,7 @@ function Employees() {
         <Col md={12} className="flex flex-col justify-center items-center mt-4">
           {employees.length > 0 && (
             <Table
-              columnNames={[
-                '#',
-                'First Name',
-                'Last Name',
-                'Email',
-                'Contact Number',
-                'Actions',
-              ]}
+              columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}
               data={tableData(employees)}
             />
           )}

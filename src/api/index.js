@@ -35,10 +35,4 @@ const deleteEmployee = async (id) => {
   return results;
 };
 
-export {
-  createEmployee,
-  readEmployees,
-  readEmployee,
-  updateEmployee,
-  deleteEmployee,
-};
+export { createEmployee, readEmployees, readEmployee, updateEmployee, deleteEmployee };

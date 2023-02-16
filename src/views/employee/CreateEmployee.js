@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
@@ -181,19 +181,10 @@ function CreateEmployee() {
         <br />
         <h5>Skills</h5>
         <div>
-          <Button
-            size="lg"
-            color="primary"
-            className="float-right"
-            type="submit"
-          >
+          <Button size="lg" color="primary" className="float-right" type="submit">
             Save
           </Button>
-          <Button
-            size="lg"
-            className="float-right mr-2"
-            onClick={() => navigate(-1)}
-          >
+          <Button size="lg" className="float-right mr-2" onClick={() => navigate(-1)}>
             Cancel
           </Button>
         </div>

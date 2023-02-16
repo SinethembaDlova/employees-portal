@@ -1,6 +1,7 @@
+import React from 'react';
 import emptyState from './assets/emptyState.JPG';
 
-function EmptyState() {
+const EmptyState = () => {
   return (
     <div>
       <header className="App-header">
@@ -10,6 +11,6 @@ function EmptyState() {
       </header>
     </div>
   );
-}
+};
 
 export default EmptyState;

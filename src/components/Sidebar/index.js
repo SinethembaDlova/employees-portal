@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import {
-  SidebarContainer,
-  SidebarMenuContainer,
-  StyledNavLink,
-} from './index.style';
+import PropTypes from 'prop-types';
+import { SidebarContainer, SidebarMenuContainer, StyledNavLink } from './index.style';
 
-function Sidebar(props) {
+const Sidebar = ({ toggle }) => {
   const items = ['Employees'];
   const pages = ['employees'];
   const icons = ['group'];
@@ -16,7 +13,7 @@ function Sidebar(props) {
   };
 
   return (
-    <SidebarContainer act={props.toggle}>
+    <SidebarContainer act={toggle}>
       <SidebarMenuContainer>
         <div>
           {items.map((item, index) => {
@@ -32,8 +29,7 @@ function Sidebar(props) {
                 to={`/${pages[index]}`}
                 className={strClass}
                 key={index}
-                onClick={() => toggleClass(index)}
-              >
+                onClick={() => toggleClass(index)}>
                 <i className="material-icons">{icons[index]}</i>
                 <span>{item}</span>
               </StyledNavLink>
@@ -43,6 +39,10 @@ function Sidebar(props) {
       </SidebarMenuContainer>
     </SidebarContainer>
   );
-}
+};
+
+Sidebar.propTypes = {
+  toggle: PropTypes.bool.isRequired,
+};
 
 export default Sidebar;

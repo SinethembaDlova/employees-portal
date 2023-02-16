@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledTable from './index.style';
 
-function Table({ columnNames, data }) {
+const Table = ({ columnNames, data }) => {
   return (
     <div>
       {data.length > 0 && (
@@ -29,6 +30,11 @@ function Table({ columnNames, data }) {
       )}
     </div>
   );
-}
+};
+
+Table.propTypes = {
+  columnNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Table;
