@@ -9,7 +9,7 @@ import Loader from '../../../components/Loader';
 function CreateEmployee() {
   const { addEmployee, isLoading } = useContext(EmployeeContext);
   const navigate = useNavigate();
-  const [employee] = useState({
+  const [employee, setEmployee] = useState({
     first_name: '',
     last_name: '',
     contact_number: '',
@@ -43,7 +43,7 @@ function CreateEmployee() {
         <h1>Create Employee</h1>
       </Row>
       <Row>
-        <EmployeeForm employee={employee} onSubmit={handleAdding} />
+        <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleAdding} />
       </Row>
     </Container>
   );

@@ -3,20 +3,7 @@ import PropTypes from 'prop-types';
 import { convertDateStringToDateObject } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const EmployeeForm = ({ employee: initialEmployee, isDisabled = false, onSubmit }) => {
-  const [employee, setEmployee] = useState({
-    first_name: initialEmployee.first_name,
-    last_name: initialEmployee.last_name,
-    contact_number: initialEmployee.contact_number,
-    email: initialEmployee.email,
-    dob: initialEmployee.dob,
-    address: {
-      street_address: initialEmployee.address.street_address,
-      city: initialEmployee.address.city,
-      postal_code: initialEmployee.address.postal_code,
-      country: initialEmployee.address.country,
-    },
-  });
+const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
   const [errors, setErrors] = useState({
     first_name: false,
     last_name: false,
@@ -203,7 +190,8 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled = false, onSubmit 
 
 EmployeeForm.propTypes = {
   employee: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isDisabled: PropTypes.bool.isRequired,
+  setEmployee: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
 };
 
