@@ -98,7 +98,7 @@ function Employee() {
         });
       }
     })();
-  }, [params.id, getEmployee]);
+  }, [params.id]);
 
   if (isLoading) return <Loader />;
 
