@@ -1,18 +1,74 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { convertDateStringToDateObject } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
-  const [employee, setEmployee] = useState({ initialEmployee });
-  const navigate = useNavigate();
+const EmployeeForm = ({ employee: initialEmployee, isDisabled = false, onSubmit }) => {
+  const [employee, setEmployee] = useState({
+    first_name: initialEmployee.first_name,
+    last_name: initialEmployee.last_name,
+    contact_number: initialEmployee.contact_number,
+    email: initialEmployee.email,
+    dob: initialEmployee.dob,
+    address: {
+      street_address: initialEmployee.address.street_address,
+      city: initialEmployee.address.city,
+      postal_code: initialEmployee.address.postal_code,
+      country: initialEmployee.address.country,
+    },
+  });
+  const [errors, setErrors] = useState({
+    first_name: false,
+    last_name: false,
+    contact_number: false,
+    email: false,
+    dob: false,
+    street_address: false,
+    city: false,
+    postal_code: false,
+    country: false,
+  });
 
   const handleInputChange = ({ target }) => {
-    setEmployee({ ...employee, [target.name]: target.value });
+    const { name, value } = target;
+    setEmployee({ ...employee, [name]: value });
+  };
+
+  const handleAddressInputChange = ({ target }) => {
+    const { name, value } = target;
+    setEmployee({
+      ...employee,
+      address: {
+        ...employee.address,
+        [name]: value,
+      },
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setErrors({
+      first_name: employee.first_name.length === 0,
+      last_name: employee.last_name.length === 0,
+      contact_number: employee.contact_number.length === 0,
+      email: employee.email.length === 0,
+      dob: employee.dob.length === 0,
+      street_address: employee.address.street_address.length === 0,
+      city: employee.address.city.length === 0,
+      postal_code: employee.address.postal_code.length === 0,
+      country: employee.address.country.length === 0,
+    });
+
+    const formIsValid = Object.values(errors).every((error) => error === false);
+
+    if (formIsValid) {
+      onSubmit(employee);
+    }
   };
 
   return (
-    <Form onSubmit={onSubmit(employee)}>
+    <Form onSubmit={handleSubmit}>
       <h5>Basic Information</h5>
       <Row>
         <Col md={6}>
@@ -74,7 +130,7 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
               id="dob"
               name="dob"
               type="date"
-              value={employee?.email}
+              value={convertDateStringToDateObject(employee?.dob)}
               disabled={isDisabled}
               onChange={handleInputChange}
             />
@@ -82,7 +138,6 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
         </Col>
       </Row>
       <br />
-
       <h5>Adress Information</h5>
       <Row>
         <Col md={6}>
@@ -93,7 +148,7 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
               name="street_address"
               value={employee?.address?.street_address}
               disabled={isDisabled}
-              onChange={handleInputChange}
+              onChange={handleAddressInputChange}
             />
           </FormGroup>
         </Col>
@@ -105,7 +160,7 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
               name="city"
               value={employee?.address?.city}
               disabled={isDisabled}
-              onChange={handleInputChange}
+              onChange={handleAddressInputChange}
             />
           </FormGroup>
         </Col>
@@ -119,7 +174,7 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
               name="postal_code"
               value={employee?.address?.postal_code}
               disabled={isDisabled}
-              onChange={handleInputChange}
+              onChange={handleAddressInputChange}
             />
           </FormGroup>
         </Col>
@@ -131,22 +186,17 @@ const EmployeeForm = ({ employee: initialEmployee, isDisabled, onSubmit }) => {
               name="country"
               value={employee?.address?.country}
               disabled={isDisabled}
-              onChange={handleInputChange}
+              onChange={handleAddressInputChange}
             />
           </FormGroup>
         </Col>
       </Row>
       <br />
       <h5>Skills</h5>
-
-      <div>
-        <Button size="lg" color="primary" className="float-right" type="submit">
-          Save
-        </Button>
-        <Button size="lg" className="float-right mr-2" onClick={() => navigate(-1)}>
-          Cancel
-        </Button>
-      </div>
+      <Button size="lg" color="primary" className="float-right" type="submit">
+        Update
+      </Button>{' '}
+      &nbsp;
     </Form>
   );
 };
