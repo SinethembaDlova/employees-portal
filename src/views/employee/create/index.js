@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
-import { EmployeeContext } from '../../context/EmployeeContext';
-import Container from '../../components/Container';
-import Loader from '../../components/Loader';
+import { EmployeeContext } from '../../../context/EmployeeContext';
+import Container from '../../../components/Container';
+import Loader from '../../../components/Loader';
 
 function CreateEmployee() {
   const { addEmployee, isLoading } = useContext(EmployeeContext);

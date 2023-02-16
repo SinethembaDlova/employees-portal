@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { EmployeeProvider } from './context/EmployeeContext';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import CreateEmployee from './views/employee/CreateEmployee';
+import CreateEmployee from './views/employee/create';
 import Employee from './views/employee';
 import Employees from './views/employees';
 
