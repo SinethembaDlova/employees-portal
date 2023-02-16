@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { convertDateStringToDateObject } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({
     first_name: false,
     last_name: false,
@@ -182,8 +184,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       <h5>Skills</h5>
       <Button size="lg" color="primary" className="float-right" type="submit">
         Update
-      </Button>{' '}
-      &nbsp;
+      </Button>
+      <Button size="lg" color="secondary" className="float-right mr-2" onClick={() => navigate(-1)}>
+        Cancel
+      </Button>
     </Form>
   );
 };
