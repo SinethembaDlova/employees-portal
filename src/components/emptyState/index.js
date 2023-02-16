@@ -1,15 +1,14 @@
 import React from 'react';
-import emptyState from './assets/emptyState.JPG';
+import { Container, Image } from './index.style';
+import emptyState from '../../assets/emptyState.JPG';
 
 const EmptyState = () => {
   return (
-    <div>
-      <header className="App-header">
-        <img src={emptyState} alt="logo" />
-        <p>There is nothing here.</p>
-        Create a new employee by clicking the New Employee butoon to get started
-      </header>
-    </div>
+    <Container>
+      <Image src={emptyState} alt="empty" />
+      <p>There is nothing here.</p>
+      <p>Create a new employee by clicking the New Employee butoon to get started.</p>
+    </Container>
   );
 };
 
