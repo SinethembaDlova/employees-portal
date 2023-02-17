@@ -33,7 +33,6 @@ function EmployeeProvider({ children }) {
     try {
       setIsLoading(true);
       const results = await createEmployee(employee);
-      console.log('ewe: ', results?.data);
       setEmployees([...employees, results?.data]);
       return setIsLoading(false);
     } catch (error) {
