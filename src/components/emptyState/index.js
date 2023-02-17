@@ -7,7 +7,7 @@ const EmptyState = () => {
     <Container>
       <Image src={emptyState} alt="empty" />
       <p>There is nothing here.</p>
-      <p>Create a new employee by clicking the New Employee butoon to get started.</p>
+      <p>Create a new employee by clicking the New Employee button.</p>
     </Container>
   );
 };
