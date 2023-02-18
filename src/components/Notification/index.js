@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VARIANT } from '../../constants';
+import VARIANT from '../../constants/notification';
 import { NotificationContainer, IconTextWrapper, IconWrapper, TextWrapper } from './index.style';
 
-const Alert = ({ variant, message, noBorder, ...restProps }) => {
+const Notification = ({ variant, message, noBorder, ...restProps }) => {
   return (
     <NotificationContainer variant={variant} message={message} noBorder={noBorder} {...restProps}>
       <IconTextWrapper>
@@ -20,10 +20,10 @@ const Alert = ({ variant, message, noBorder, ...restProps }) => {
   );
 };
 
-Alert.propTypes = {
+Notification.propTypes = {
   variant: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   noBorder: PropTypes.bool.isRequired,
 };
 
-export default Alert;
+export default Notification;

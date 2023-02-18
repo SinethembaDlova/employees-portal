@@ -2,9 +2,8 @@ import styled, { css } from 'styled-components';
 
 const NotificationContainer = styled.div`
   width: 100%;
-  max-width: 350px;
   display: flex;
-  padding: 10px 20px;
+  padding: 13px 20px;
   border-radius: ${(props) => (props.noBorder ? '0px' : '10px')};
   ${(props) => {
     if (props.variant === 'success') {

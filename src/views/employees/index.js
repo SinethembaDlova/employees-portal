@@ -5,6 +5,7 @@ import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import EmptyState from '../../components/EmptyState';
 import Loader from '../../components/Loader';
+import Notification from '../../components/Notification';
 import Table from '../../components/Table';
 
 function Employees() {
@@ -38,6 +39,9 @@ function Employees() {
             Add New Employee
           </Button>
         </Col>
+      </Row>
+      <Row>
+        <Notification variant="error" message="Hello Sir" />
       </Row>
       <Row>
         {employees.length > 0 ? (

@@ -19,13 +19,28 @@ export const useEmployees = () => {
 function EmployeeProvider({ children }) {
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [notify, setNotify] = useState({
+    variant: null,
+    message: null,
+  });
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
-      const results = await readEmployees();
-      setEmployees(results?.data);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const results = await readEmployees();
+        setEmployees(results?.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setNotify({
+          variant: 'success',
+          message: 'Oops! Something went wrong when trying to fetch employees. Please try again.',
+        });
+        setTimeout(() => {
+          setNotify({ variant: null, message: null });
+        }, 10000);
+      }
     })();
   }, []);
 
@@ -37,6 +52,13 @@ function EmployeeProvider({ children }) {
       return setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setNotify({
+        variant: 'error',
+        message: 'Oops! Something went wrong when trying to create employee. Please try again.',
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 10000);
     }
   };
 
@@ -48,6 +70,13 @@ function EmployeeProvider({ children }) {
       return results?.data;
     } catch (error) {
       console.error(error);
+      setNotify({
+        variant: 'error',
+        message: 'Oops! Something went wrong when trying to fetch employee. Please try again.',
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 10000);
     }
   };
 
@@ -59,16 +88,34 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setNotify({
+        variant: 'error',
+        message: 'Oops! Something went wrong when trying to update employee. Please try again.',
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 10000);
     }
   };
 
   const removeEmployee = async (id) => {
-    setIsLoading(true);
-    const results = await deleteEmployee(id);
-    if (results.status === 200) {
-      setEmployees(employees.filter((employee) => employee._id !== id));
+    try {
+      setIsLoading(true);
+      const results = await deleteEmployee(id);
+      if (results.status === 200) {
+        setEmployees(employees.filter((employee) => employee._id !== id));
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+      setNotify({
+        variant: 'error',
+        message: 'Oops! Something went wrong when trying to delete employee. Please try again.',
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 10000);
     }
-    setIsLoading(false);
   };
 
   return (
@@ -76,6 +123,7 @@ function EmployeeProvider({ children }) {
       value={{
         employees,
         isLoading,
+        notify,
         addEmployee,
         getEmployee,
         removeEmployee,
