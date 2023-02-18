@@ -33,8 +33,9 @@ function EmployeeProvider({ children }) {
         setIsLoading(false);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
         setNotify({
-          variant: 'success',
+          variant: 'error',
           message: 'Oops! Something went wrong when trying to fetch employees. Please try again.',
         });
         setTimeout(() => {
@@ -52,6 +53,7 @@ function EmployeeProvider({ children }) {
       return setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to create employee. Please try again.',
@@ -70,6 +72,7 @@ function EmployeeProvider({ children }) {
       return results?.data;
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to fetch employee. Please try again.',
@@ -88,6 +91,7 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to update employee. Please try again.',
@@ -108,6 +112,7 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to delete employee. Please try again.',

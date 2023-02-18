@@ -9,7 +9,7 @@ import Notification from '../../components/Notification';
 import Table from '../../components/Table';
 
 function Employees() {
-  const { employees, isLoading } = useContext(EmployeeContext);
+  const { employees, isLoading, notify } = useContext(EmployeeContext);
   const navigate = useNavigate();
 
   const tableData = (data) =>
@@ -41,7 +41,9 @@ function Employees() {
         </Col>
       </Row>
       <Row>
-        <Notification variant="error" message="Hello Sir" />
+        {notify.variant && notify.message && (
+          <Notification variant={notify.variant} message={notify.message} />
+        )}
       </Row>
       <Row>
         {employees.length > 0 ? (
