@@ -40,7 +40,7 @@ function EmployeeProvider({ children }) {
         });
         setTimeout(() => {
           setNotify({ variant: null, message: null });
-        }, 10000);
+        }, 5000);
       }
     })();
   }, []);
@@ -60,7 +60,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 10000);
+      }, 5000);
     }
   };
 
@@ -72,14 +72,13 @@ function EmployeeProvider({ children }) {
       return results?.data;
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to fetch employee. Please try again.',
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 10000);
+      }, 5000);
     }
   };
 
@@ -91,14 +90,13 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to update employee. Please try again.',
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 10000);
+      }, 5000);
     }
   };
 
@@ -112,14 +110,13 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
       setNotify({
         variant: 'error',
         message: 'Oops! Something went wrong when trying to delete employee. Please try again.',
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 10000);
+      }, 5000);
     }
   };
 

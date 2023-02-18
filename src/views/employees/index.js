@@ -40,13 +40,13 @@ function Employees() {
           </Button>
         </Col>
       </Row>
-      <Row>
+      <Row className="mt-4">
         {notify.variant && notify.message && (
           <Notification variant={notify.variant} message={notify.message} />
         )}
       </Row>
       <Row>
-        {employees.length > 0 ? (
+        {employees.length > 0 && !notify.variant && !notify.message ? (
           <Col md={12} className="flex flex-col justify-center items-center mt-5">
             <Table
               columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}
