@@ -19,7 +19,6 @@ const Sidebar = ({ toggle }) => {
           {items.map((item, index) => {
             let strClass = '';
             if (isActive === index) {
-              console.log(index);
               strClass = 'active';
             } else {
               strClass = 'Noactive';

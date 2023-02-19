@@ -35,11 +35,11 @@ function CreateEmployee() {
     navigate(`/employees/${createdEmployee._id}`);
   };
 
-  if (isLoading) <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <Container>
-      <Row>
+      <Row className="mb-4">
         <h1>Create Employee</h1>
       </Row>
       <Row>

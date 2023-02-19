@@ -48,9 +48,17 @@ function EmployeeProvider({ children }) {
   const addEmployee = async (employee) => {
     try {
       setIsLoading(true);
-      const results = await createEmployee(employee);
-      setEmployees([...employees, results?.data]);
-      return setIsLoading(false);
+      const createdEmployee = await createEmployee(employee);
+      setEmployees([...employees, createdEmployee?.data]);
+      setIsLoading(false);
+      setNotify({
+        variant: 'success',
+        message: `Employee successfully created.`,
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 5000);
+      return createdEmployee?.data;
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -90,7 +98,7 @@ function EmployeeProvider({ children }) {
       setIsLoading(false);
       setNotify({
         variant: 'success',
-        message: `Successfully updated information of employee ${employee?.first_name} ${employee?.last_name}.`,
+        message: 'Employee successfully updated',
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
@@ -115,6 +123,13 @@ function EmployeeProvider({ children }) {
         setEmployees(employees.filter((employee) => employee._id !== id));
       }
       setIsLoading(false);
+      setNotify({
+        variant: 'success',
+        message: 'Employee Successfully deleted.',
+      });
+      setTimeout(() => {
+        setNotify({ variant: null, message: null });
+      }, 5000);
     } catch (error) {
       console.error(error);
       setNotify({
