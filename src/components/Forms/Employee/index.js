@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { convertDateStringToDateObject } from '../../../utils/date';
+import { convertDateStringToDateObject, convertDateObjectToString } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
@@ -21,7 +21,12 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
-    setEmployee({ ...employee, [name]: value });
+    console.log(value);
+    if (name === 'dob') {
+      setEmployee({ ...employee, [name]: convertDateObjectToString(value) });
+    } else {
+      setEmployee({ ...employee, [name]: value });
+    }
   };
 
   const handleAddressInputChange = ({ target }) => {
