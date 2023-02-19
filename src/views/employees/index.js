@@ -46,7 +46,7 @@ function Employees() {
         )}
       </Row>
       <Row>
-        {employees.length > 0 && !notify.variant && !notify.message ? (
+        {employees.length > 0 ? (
           <Col md={12} className="flex flex-col justify-center items-center mt-5">
             <Table
               columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}

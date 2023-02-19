@@ -31,6 +31,13 @@ function EmployeeProvider({ children }) {
         const results = await readEmployees();
         setEmployees(results?.data);
         setIsLoading(false);
+        setNotify({
+          variant: 'success',
+          message: 'Successfully fetched employees.',
+        });
+        setTimeout(() => {
+          setNotify({ variant: null, message: null });
+        }, 5000);
       } catch (error) {
         console.error(error);
         setIsLoading(false);
