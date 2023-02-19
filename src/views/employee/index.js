@@ -5,9 +5,11 @@ import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
 import EmployeeForm from '../../components/Forms/Employee';
 import Loader from '../../components/Loader';
+import Notification from '../../components/Notification';
 
 function Employee() {
-  const { getEmployee, updateEmployee, removeEmployee, isLoading } = useContext(EmployeeContext);
+  const { getEmployee, updateEmployee, removeEmployee, isLoading, notify } =
+    useContext(EmployeeContext);
   const params = useParams();
   const navigate = useNavigate();
   const [employee, setEmployee] = useState({
@@ -85,9 +87,18 @@ function Employee() {
           </FormGroup>
         </Col>
       </Row>
-      <br />
+      <Row className="mt-4 mb-4">
+        {notify.variant && notify.message && (
+          <Notification variant={notify.variant} message={notify.message} />
+        )}
+      </Row>
       <Row>
-        <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleUpdating} />
+        <EmployeeForm
+          employee={employee}
+          setEmployee={setEmployee}
+          onSubmit={handleUpdating}
+          isDisabled={isDisabled}
+        />
       </Row>
     </Container>
   );
