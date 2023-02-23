@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import SkillSet from '../../SkillSet';
 import { convertDateStringToDateObject, convertDateObjectToString } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
+  console.log('Mojo: ', employee);
   const navigate = useNavigate();
   const paramsId = useParams().id;
   const [errors, setErrors] = useState({
@@ -188,6 +190,11 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       </Row>
       <br />
       <h5>Skills</h5>
+      <Row>
+        <Col>
+          <SkillSet skills={employee?.skills} isDisabled={isDisabled} />
+        </Col>
+      </Row>
       <Button size="lg" color="primary" className="float-right" type="submit">
         {paramsId ? 'Update' : 'Create'}
       </Button>
