@@ -3,10 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
 import { convertDateStringToDateObject, convertDateObjectToString } from '../../../utils/date';
-import { Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, Row, Col, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
-  console.log('Mojo: ', employee);
   const navigate = useNavigate();
   const paramsId = useParams().id;
   const [errors, setErrors] = useState({
@@ -56,7 +55,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       postal_code: employee.address.postal_code.length === 0,
       country: employee.address.country.length === 0,
     });
-
+    console.Console('errors: ', errors);
     const formIsValid = Object.values(errors).every((error) => error === false);
 
     if (formIsValid) {
@@ -76,8 +75,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="first_name"
               value={employee?.first_name}
               disabled={isDisabled}
+              invalid={errors?.first_name}
               onChange={handleInputChange}
             />
+            <FormFeedback>First Name is a required field.</FormFeedback>
           </FormGroup>
         </Col>
         <Col md={6}>
@@ -88,8 +89,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="last_name"
               value={employee?.last_name}
               disabled={isDisabled}
+              invalid={errors?.last_name}
               onChange={handleInputChange}
             />
+            <FormFeedback>Last Name is a required field.</FormFeedback>
           </FormGroup>
         </Col>
       </Row>
@@ -102,8 +105,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="contact_number"
               value={employee?.contact_number}
               disabled={isDisabled}
+              invalid={errors?.contact_number}
               onChange={handleInputChange}
             />
+            <FormFeedback>Contact Number is a required field.</FormFeedback>
           </FormGroup>
         </Col>
         <Col md={6}>
@@ -114,8 +119,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="email"
               value={employee?.email}
               disabled={isDisabled}
+              invalid={errors?.email}
               onChange={handleInputChange}
             />
+            <FormFeedback>Email is a required field.</FormFeedback>
           </FormGroup>
         </Col>
       </Row>
@@ -129,13 +136,15 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               type="date"
               value={convertDateStringToDateObject(employee?.dob)}
               disabled={isDisabled}
+              invalid={errors?.dob}
               onChange={handleInputChange}
             />
+            <FormFeedback>Date Of Birth is a required field.</FormFeedback>
           </FormGroup>
         </Col>
       </Row>
       <br />
-      <h5>Adress Information</h5>
+      <h5>Address Information</h5>
       <Row>
         <Col md={6}>
           <FormGroup>
@@ -145,8 +154,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="street_address"
               value={employee?.address?.street_address}
               disabled={isDisabled}
+              invalid={errors?.street_address}
               onChange={handleAddressInputChange}
             />
+            <FormFeedback>Street Address is a required field.</FormFeedback>
           </FormGroup>
         </Col>
         <Col md={6}>
@@ -157,8 +168,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="city"
               value={employee?.address?.city}
               disabled={isDisabled}
+              invalid={errors?.city}
               onChange={handleAddressInputChange}
             />
+            <FormFeedback>City is a required field.</FormFeedback>
           </FormGroup>
         </Col>
       </Row>
@@ -171,8 +184,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="postal_code"
               value={employee?.address?.postal_code}
               disabled={isDisabled}
+              invalid={errors?.postal_code}
               onChange={handleAddressInputChange}
             />
+            <FormFeedback>Postal Code is a required field.</FormFeedback>
           </FormGroup>
         </Col>
         <Col md={6}>
@@ -183,8 +198,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               name="country"
               value={employee?.address?.country}
               disabled={isDisabled}
+              invalid={errors?.country}
               onChange={handleAddressInputChange}
             />
+            <FormFeedback>Country is a required field.</FormFeedback>
           </FormGroup>
         </Col>
       </Row>
