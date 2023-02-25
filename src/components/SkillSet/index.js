@@ -4,12 +4,14 @@ import { FormGroup, Label, Input, Row, Col, Button } from 'reactstrap';
 
 const SkillSet = ({ skills, isDisabled }) => {
   const [isConfirming, setIsConfirming] = useState(null);
-  const handleDelete = (index) => {
-    return skills.filter((_, i) => i !== index);
-  };
 
   const handleConfirming = (index) => {
     setIsConfirming(index);
+  };
+
+  const handleDelete = (index) => {
+    skills.splice(index, 1);
+    setIsConfirming(null);
   };
 
   return (
@@ -41,9 +43,9 @@ const SkillSet = ({ skills, isDisabled }) => {
                 id="seniority_rating"
                 type="select"
                 name="seniority_rating"
-                disabled={isDisabled}
-                value={skill?.seniority_rating}
-              />
+                disabled={isDisabled}>
+                <option value={skill?.seniority_rating}>{skill?.seniority_rating}</option>
+              </Input>
             </FormGroup>
           </Col>
           {!isDisabled && (
