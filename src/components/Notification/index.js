@@ -8,9 +8,9 @@ const Notification = ({ variant, message, noBorder, ...restProps }) => {
     <NotificationContainer variant={variant} message={message} noBorder={noBorder} {...restProps}>
       <IconTextWrapper>
         <IconWrapper>
-          {variant === VARIANT.SUCCESS && <i className="material-icons">check</i>}
-          {variant === VARIANT.WARNING && <i className="material-icons">warning</i>}
-          {variant === VARIANT.ERROR && <i className="material-icons">error</i>}
+          {variant === VARIANT.success && <i className="material-icons">check</i>}
+          {variant === VARIANT.warning && <i className="material-icons">warning</i>}
+          {variant === VARIANT.error && <i className="material-icons">error</i>}
         </IconWrapper>
         <TextWrapper>
           <div>{message}</div>

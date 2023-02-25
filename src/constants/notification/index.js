@@ -1,7 +1,7 @@
 const VARIANT = {
-  SUCCESS: 'success',
-  WARNING: 'warning',
-  ERROR: 'error',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
 };
 
 export default VARIANT;
