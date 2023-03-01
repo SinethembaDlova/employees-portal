@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
-import { convertDateStringToDateObject, convertDateObjectToString } from '../../../utils/date';
+import { convertToDbDate, converToInputDate } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
@@ -22,9 +22,8 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
-    console.log(value);
     if (name === 'dob') {
-      setEmployee({ ...employee, [name]: convertDateObjectToString(value) });
+      setEmployee({ ...employee, [name]: convertToDbDate(value) });
     } else {
       setEmployee({ ...employee, [name]: value });
     }
@@ -55,7 +54,6 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       postal_code: employee.address.postal_code.length === 0,
       country: employee.address.country.length === 0,
     });
-    console.Console('errors: ', errors);
     const formIsValid = Object.values(errors).every((error) => error === false);
 
     if (formIsValid) {
@@ -134,7 +132,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               id="dob"
               name="dob"
               type="date"
-              value={convertDateStringToDateObject(employee?.dob)}
+              value={converToInputDate(employee?.dob)}
               disabled={isDisabled}
               invalid={errors?.dob}
               onChange={handleInputChange}

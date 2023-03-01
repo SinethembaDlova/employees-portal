@@ -1,4 +1,4 @@
-const convertDateObjectToString = (date) => {
+const convertToDbDate = (date) => {
   const dateArray = date.split('-');
   const year = dateArray[0];
   const month = dateArray[1];
@@ -7,13 +7,13 @@ const convertDateObjectToString = (date) => {
   return `${day}/${month}/${year}`;
 };
 
-const convertDateStringToDateObject = (dateString) => {
-  const dateComponents = dateString.split('/');
-  const day = parseInt(dateComponents[0], 10);
-  const month = parseInt(dateComponents[1], 10) - 1;
-  const year = parseInt(dateComponents[2], 10);
+const converToInputDate = (dateString) => {
+  const dateArray = dateString.split('/');
+  const day = dateArray[0];
+  const month = dateArray[1];
+  const year = dateArray[2];
 
   return `${year}-${month}-${day}`;
 };
 
-export { convertDateObjectToString, convertDateStringToDateObject };
+export { convertToDbDate, converToInputDate };

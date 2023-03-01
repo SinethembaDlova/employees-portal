@@ -14,20 +14,14 @@ function CreateEmployee() {
     last_name: '',
     contact_number: '',
     email: '',
-    dob: '11/12/1990',
+    dob: '',
     address: {
       street_address: '',
       city: '',
       postal_code: '',
       country: '',
     },
-    skills: [
-      {
-        skill: 'React',
-        year_of_exp: 2,
-        seniority_rating: 'Beginner',
-      },
-    ],
+    skills: [],
   });
 
   const handleAdding = async () => {

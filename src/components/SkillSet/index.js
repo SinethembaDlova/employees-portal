@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, Input, Row, Col, Button } from 'reactstrap';
+import SENIORITY_RATINGS from '../../constants/seniorityRatings';
 
 const SkillSet = ({ skills, isDisabled }) => {
   const [newSkill, setNewSkill] = useState({ skill: '', year_of_exp: 0, seniority_rating: '' });
@@ -37,7 +38,7 @@ const SkillSet = ({ skills, isDisabled }) => {
         <Row className="" key={index}>
           <Col md={4}>
             <FormGroup>
-              <Input id="skill" name="skill" disabled={isDisabled} value={skill?.skill} />
+              <Input id="skill" name="skill" disabled={true} value={skill?.skill} />
             </FormGroup>
           </Col>
           <Col md={3}>
@@ -46,18 +47,14 @@ const SkillSet = ({ skills, isDisabled }) => {
                 id="year_of_exp"
                 type="number"
                 name="year_of_exp"
-                disabled={isDisabled}
+                disabled={true}
                 value={skill?.year_of_exp}
               />
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
-              <Input
-                id="seniority_rating"
-                type="select"
-                name="seniority_rating"
-                disabled={isDisabled}>
+              <Input id="seniority_rating" type="select" name="seniority_rating" disabled={true}>
                 <option value={skill?.seniority_rating}>{skill?.seniority_rating}</option>
               </Input>
             </FormGroup>
@@ -115,7 +112,14 @@ const SkillSet = ({ skills, isDisabled }) => {
                 name="seniority_rating"
                 disabled={isDisabled}
                 onChange={handleInputChange}>
-                <option value={newSkill?.seniority_rating}>{newSkill?.seniority_rating}</option>
+                <option value="">Please select an option</option>
+                {SENIORITY_RATINGS.map((senior_rating) => {
+                  return (
+                    <option key={senior_rating} value={senior_rating}>
+                      {senior_rating}
+                    </option>
+                  );
+                })}
               </Input>
             </FormGroup>
           </Col>
