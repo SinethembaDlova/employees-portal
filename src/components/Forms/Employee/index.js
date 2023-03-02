@@ -63,7 +63,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h5>Basic Information</h5>
+      <h5 className="mb-1">Basic Information</h5>
       <Row>
         <Col md={6}>
           <FormGroup>
@@ -124,7 +124,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <Row>
+      <Row className="mb-3">
         <Col md={6}>
           <FormGroup>
             <Label for="dob">Date Of Birth</Label>
@@ -141,8 +141,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <br />
-      <h5>Address Information</h5>
+      <h5 className="mb-1">Address Information</h5>
       <Row>
         <Col md={6}>
           <FormGroup>
@@ -173,7 +172,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <Row>
+      <Row className="mb-3">
         <Col md={6}>
           <FormGroup>
             <Label for="postal_code">Postal Code</Label>
@@ -203,19 +202,27 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <br />
-      <h5>Skills</h5>
-      <Row>
+
+      <h5 className="mb-1">Skills</h5>
+      <Row className="mb-3">
         <Col>
           <SkillSet skills={employee?.skills} isDisabled={isDisabled} />
         </Col>
       </Row>
-      <Button size="lg" color="primary" className="float-right" type="submit">
-        {paramsId ? 'Update' : 'Create'}
-      </Button>
-      <Button size="lg" color="secondary" className="float-right mr-2" onClick={() => navigate(-1)}>
-        Cancel
-      </Button>
+      {!isDisabled && (
+        <div>
+          <Button size="lg" color="primary" className="float-right" type="submit">
+            {paramsId ? 'Update' : 'Create'}
+          </Button>
+          <Button
+            size="lg"
+            color="secondary"
+            className="float-right mr-2"
+            onClick={() => navigate(-1)}>
+            Cancel
+          </Button>
+        </div>
+      )}
     </Form>
   );
 };
