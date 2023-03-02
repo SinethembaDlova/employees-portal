@@ -228,7 +228,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 };
 
 EmployeeForm.propTypes = {
-  employee: PropTypes.arrayOf(PropTypes.object).isRequired,
+  employee: PropTypes.object.isRequired,
   setEmployee: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,

@@ -66,7 +66,12 @@ function Employee() {
           <h1>Employee</h1>
         </Col>
         <Col md={6}>
-          <Button size="lg" color="danger" outline className="float-right" onClick={handleDeleting}>
+          <Button
+            bssize="lg"
+            color="danger"
+            outline
+            className="float-right"
+            onClick={handleDeleting}>
             Delete Employee
           </Button>
         </Col>
@@ -77,9 +82,9 @@ function Employee() {
           <FormGroup className="float-right" switch disabled={isDisabled}>
             <Input
               type="switch"
-              size="md"
+              bssize="md"
               checked={isDisabled}
-              onClick={() => {
+              onChange={() => {
                 setIsDisabled(!isDisabled);
               }}
             />

@@ -41,7 +41,7 @@ const Sidebar = ({ toggle }) => {
 };
 
 Sidebar.propTypes = {
-  toggle: PropTypes.bool.isRequired,
+  toggle: PropTypes.bool,
 };
 
 export default Sidebar;
