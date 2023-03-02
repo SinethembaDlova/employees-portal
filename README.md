@@ -11,7 +11,7 @@
     - [Express](https://expressjs.com/) (server).
     - [Styled Components](https://www.styled-components.com/) (writes custom CSS in javascript).
     - [ReactStrap](https://reactstrap.github.io/?path=/docs/home-installation--page) (External react component library).
-    - [Tailwind] (https://tailwindcss.com/docs/installation) (External CSS library) 
+    - [Tailwind] (https://tailwindcss.com/docs/installation) (External CSS library).
 
 ## Get started
 
@@ -33,4 +33,4 @@ npm start
 
 ## Contributing
 
-* Contributions are welcomed via pull-requests on feature branches using [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/)
+* Contributions are welcomed via pull-requests on feature branches using [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/).
