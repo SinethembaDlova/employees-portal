@@ -27,6 +27,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "build": "react-scripts build",
     "start": "react-scripts start",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "prettier": "prettier \"*.js\" \"src/**/*.js\" --write",
