@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
 import Container from '../../components/Container';
-import EmptyState from '../../components/EmptyState';
+import EmptyState from '../../components/Container/State/Empty';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
 import Table from '../../components/Table';
