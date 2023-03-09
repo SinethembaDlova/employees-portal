@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Image } from './index.style';
-import empty from '../../../../assets/images/state/empty.jpg';
+import empty from '../../../assets/images/state/empty.jpg';
 
 const EmptyState = () => {
   return (
