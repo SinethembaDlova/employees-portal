@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import GlobalStyle from './globalStyles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { EmployeeProvider } from './context/EmployeeContext';
 import Navbar from './components/Navbar';
@@ -12,6 +13,7 @@ function App() {
   return (
     <EmployeeProvider>
       <Router>
+        <GlobalStyle />
         <Navbar />
         <Sidebar />
         <Routes>
