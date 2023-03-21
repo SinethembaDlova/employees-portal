@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container } from './index.style';
-import { empty as Svg } from '../../assets/empty.svg';
+import { ReactComponent as EmptySvg } from '../../../assets/empty.svg';
 
 const EmptyState = () => {
   return (
     <Container>
-      <Svg />
+      <EmptySvg />
       <p>There is nothing here.</p>
       <p>Create a new employee by clicking the New Employee button.</p>
     </Container>
