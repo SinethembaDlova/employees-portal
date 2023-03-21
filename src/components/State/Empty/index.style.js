@@ -9,10 +9,10 @@ const Container = styled.div`
   margin-top: 100px;
 `;
 
-const Image = styled.img`
+const Svg = styled.svg`
   width: 200px;
   height: 200px;
   margin-bottom: 16px;
 `;
 
-export { Container, Image };
+export { Container, Svg };

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container } from './index.style';
-// import empty from '../../../assets/images/state/empty.jpg';
+import { empy as Svg } from '../../../assets/images/state/empty.svg';
 
 const EmptyState = () => {
   return (
     <Container>
-      {/* <Image src={require('./assets/images/state/empty.jpg')} alt="empty" /> */}
+      <Svg />
       <p>There is nothing here.</p>
       <p>Create a new employee by clicking the New Employee button.</p>
     </Container>
