@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './index.style';
-import { empty as Svg } from '../../../assets/empty.svg';
+import { empty as Svg } from '../../assets/empty.svg';
 
 const EmptyState = () => {
   return (
