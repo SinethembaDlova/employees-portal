@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './index.style';
-import { empy as Svg } from '../../../assets/images/state/empty.svg';
+import { empty as Svg } from '../../../assets/images/state/empty.svg';
 
 const EmptyState = () => {
   return (
