@@ -26,7 +26,7 @@ function Employees() {
 
   return (
     <Container>
-      <Row>
+      <Row mb="100px">
         <Heading inverse>Employees</Heading>
         <Button size="lg" color="primary" onClick={() => navigate('/employees/create')}>
           Add New Employee
