@@ -62,4 +62,17 @@ export const Col = styled.div`
   max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : 'auto')};
 `;
 
+export const Button = styled.button`
+  border-radius: 5px;
+  background: ${({ background }) => (background ? background : '#1635fc')};
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  outline: none;
+  border: 3px solid #1635fd;
+  cursor: pointer;
+`;
+
 export default GlobalStyle;

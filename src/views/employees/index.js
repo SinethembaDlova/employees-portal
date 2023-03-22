@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import { Container, Row, Col, Heading } from '../../globalStyles';
+import { Container, Row, Col, Heading, Button } from '../../globalStyles';
 import EmptyState from '../../components/State/Empty';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
