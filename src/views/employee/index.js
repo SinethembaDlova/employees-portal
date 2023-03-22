@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import Container from '../../components/Container';
+import { Container } from '../../globalStyles';
 import EmployeeForm from '../../components/Forms/Employee';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
