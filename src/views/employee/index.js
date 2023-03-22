@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FormGroup, Label, Input, Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import { Container } from '../../globalStyles';
+import { Container, Row, Col } from '../../globalStyles';
 import EmployeeForm from '../../components/Forms/Employee';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
@@ -62,24 +62,16 @@ function Employee() {
   return (
     <Container>
       <Row>
-        <Col md={6}>
+        <Col>
           <h1>Employee</h1>
         </Col>
-        <Col md={6}>
-          <Button
-            bssize="lg"
-            color="danger"
-            outline
-            className="float-right"
-            onClick={handleDeleting}>
+      </Row>
+      <Row justify="flex-end">
+        <Col>
+          <Button bssize="lg" color="danger" outline onClick={handleDeleting}>
             Delete Employee
           </Button>
-        </Col>
-      </Row>
-      <br />
-      <Row>
-        <Col md={12}>
-          <FormGroup className="float-right" switch disabled={isDisabled}>
+          <FormGroup switch disabled={isDisabled}>
             <Input
               type="switch"
               bssize="md"
@@ -97,14 +89,12 @@ function Employee() {
           <Notification variant={notify.variant} message={notify.message} />
         )}
       </Row>
-      <Row>
-        <EmployeeForm
-          employee={employee}
-          setEmployee={setEmployee}
-          onSubmit={handleUpdating}
-          isDisabled={isDisabled}
-        />
-      </Row>
+      <EmployeeForm
+        employee={employee}
+        setEmployee={setEmployee}
+        onSubmit={handleUpdating}
+        isDisabled={isDisabled}
+      />
     </Container>
   );
 }

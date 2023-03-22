@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Row, Col, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import { Container } from '../../globalStyles';
+import { Container, Row, Col } from '../../globalStyles';
 import EmptyState from '../../components/State/Empty';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
@@ -26,38 +26,28 @@ function Employees() {
 
   return (
     <Container>
-      <Row>
-        <Col md={6}>
-          <h1>Employees</h1>
-        </Col>
-        <Col md={6}>
-          <Button
-            size="lg"
-            color="primary"
-            className="float-right"
-            onClick={() => navigate('/employees/create')}>
-            Add New Employee
-          </Button>
-        </Col>
+      <Row justify="space-between">
+        <h1>Employees</h1>
+        <Button size="lg" color="primary" onClick={() => navigate('/employees/create')}>
+          Add New Employee
+        </Button>
       </Row>
       <Row className="mt-4">
         {notify.variant && notify.message && (
           <Notification variant={notify.variant} message={notify.message} />
         )}
       </Row>
-      <Row>
-        {employees.length > 0 ? (
-          <Col md={12} className="flex flex-col justify-center items-center mt-5">
+      <Row justify="center">
+        <Col width="80%">
+          {employees.length > 0 ? (
             <Table
               columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}
               data={tableData(employees)}
             />
-          </Col>
-        ) : (
-          <Col>
+          ) : (
             <EmptyState />
-          </Col>
-        )}
+          )}
+        </Col>
       </Row>
     </Container>
   );

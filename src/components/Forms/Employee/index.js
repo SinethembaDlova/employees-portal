@@ -65,7 +65,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
     <Form onSubmit={handleSubmit}>
       <h5 className="mb-1">Basic Information</h5>
       <Row>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="first_name">First Name</Label>
             <Input
@@ -79,7 +79,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
             <FormFeedback>First Name is a required field.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="last_name">Last Name</Label>
             <Input
@@ -95,7 +95,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
       <Row>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="contact_number">Contact Number</Label>
             <Input
@@ -109,7 +109,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
             <FormFeedback>Contact Number is a required field.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input
@@ -125,7 +125,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="dob">Date Of Birth</Label>
             <Input
@@ -143,7 +143,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       </Row>
       <h5 className="mb-1">Address Information</h5>
       <Row>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="street_address">Street Adress</Label>
             <Input
@@ -157,7 +157,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
             <FormFeedback>Street Address is a required field.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="city">City</Label>
             <Input
@@ -173,7 +173,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="postal_code">Postal Code</Label>
             <Input
@@ -187,7 +187,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
             <FormFeedback>Postal Code is a required field.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col>
           <FormGroup>
             <Label for="country">Country</Label>
             <Input
@@ -210,18 +210,14 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
       {!isDisabled && (
-        <div>
-          <Button size="lg" color="primary" className="float-right" type="submit">
+        <Row>
+          <Button bssize="lg" color="primary" type="submit">
             {paramsId ? 'Update' : 'Create'}
           </Button>
-          <Button
-            size="lg"
-            color="secondary"
-            className="float-right mr-2"
-            onClick={() => navigate(-1)}>
+          <Button bssize="lg" color="secondary" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-        </div>
+        </Row>
       )}
     </Form>
   );
