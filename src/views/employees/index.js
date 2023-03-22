@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import { Container, Row, Col } from '../../globalStyles';
+import { Container, Row, Col, Heading } from '../../globalStyles';
 import EmptyState from '../../components/State/Empty';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
@@ -26,8 +26,8 @@ function Employees() {
 
   return (
     <Container>
-      <Row justify="space-between">
-        <h1>Employees</h1>
+      <Row>
+        <Heading inverse>Employees</Heading>
         <Button size="lg" color="primary" onClick={() => navigate('/employees/create')}>
           Add New Employee
         </Button>
@@ -38,7 +38,7 @@ function Employees() {
         )}
       </Row>
       <Row justify="center">
-        <Col width="80%">
+        <Col>
           {employees.length > 0 ? (
             <Table
               columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}
