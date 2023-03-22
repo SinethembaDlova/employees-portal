@@ -15,6 +15,7 @@ const StyledTable = styled.table`
 
   th,
   td {
+    text-align: center;
     padding: 18px 18px;
   }
 

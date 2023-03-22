@@ -22,7 +22,6 @@ export const Heading = styled.h2`
   color: ${({ inverse }) => (inverse ? '#274064' : '#fff')};
   letter-spacing: 0.1rem;
   line-height: 1.06;
-  // text-align: center;
   width: ${({ width }) => (width ? width : '100%')};
 `;
 
