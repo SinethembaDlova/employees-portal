@@ -72,8 +72,9 @@ export const Button = styled.button`
   font-weight: bold;
   color: #fff;
   outline: none;
-  border: 3px solid #1635fd;
+  border: ${({ border }) => (border ? border : '3px solid #1635fd')};
   cursor: pointer;
+  margin-bottom: ${({ mb }) => (mb ? mb : '')};
 `;
 
 export default GlobalStyle;

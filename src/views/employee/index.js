@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormGroup, Label, Input, Button } from 'reactstrap';
+import { FormGroup, Label, Input } from 'reactstrap';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import { Container, Row, Col } from '../../globalStyles';
+import { Container, Row, Col, Heading, Button } from '../../globalStyles';
 import EmployeeForm from '../../components/Forms/Employee';
 import Loader from '../../components/Loader';
 import Notification from '../../components/Notification';
@@ -62,13 +62,9 @@ function Employee() {
   return (
     <Container>
       <Row>
+        <Heading inverse>Employee</Heading>
         <Col>
-          <h1>Employee</h1>
-        </Col>
-      </Row>
-      <Row justify="flex-end">
-        <Col>
-          <Button bssize="lg" color="danger" outline onClick={handleDeleting}>
+          <Button background="red" border="3px solid red" mb="20px" onClick={handleDeleting}>
             Delete Employee
           </Button>
           <FormGroup switch disabled={isDisabled}>
