@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   margin: 0 auto auto 200px;
-  padding: 80px;
+  padding: 100px;
 `;
 
 export const Heading = styled.h2`

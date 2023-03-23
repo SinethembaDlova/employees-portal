@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const SidebarContainer = styled.div`
   position: fixed;
   top: 0;
-  width: ${(props) => (props.act ? '0px' : '68px')};
-  padding: ${(props) => (props.act ? '0px' : '1rem 1rem 0 0')};
+  width: ${({ act }) => (act ? '0px' : '68px')};
+  padding: ${({ act }) => (act ? '0px' : '1rem 1rem 0 0')};
   height: 100vh;
   background-color: #1635fc;
   transition: 0.5s;
@@ -16,7 +16,7 @@ const SidebarContainer = styled.div`
     background-color: #1635fc;
     margin-left: 0px;
     top: 66px;
-    width: ${(props) => (!props.act ? '180px' : 'var(--nav-width)')};
+    width: ${({ act }) => (!act ? '180px' : 'var(--nav-width)')};
   }
 `;
 
