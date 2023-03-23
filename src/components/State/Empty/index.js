@@ -6,8 +6,8 @@ const EmptyState = () => {
   return (
     <Container>
       <EmptySvg />
-      <p>There is nothing here.</p>
-      <p>Create a new employee by clicking the New Employee button.</p>
+      <p>There is currently no employees.</p>
+      <p>Click the Add New Employee button to create one.</p>
     </Container>
   );
 };
