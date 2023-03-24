@@ -26,16 +26,14 @@ function Employees() {
 
   return (
     <Container>
-      <Row mb="100px">
-        <Heading inverse>Employees</Heading>
-        <Button size="lg" color="primary" onClick={() => navigate('/employees/create')}>
-          Add New Employee
-        </Button>
-      </Row>
-      <Row className="mt-4">
+      <Row justify="center" mb="20px">
         {notify.variant && notify.message && (
           <Notification variant={notify.variant} message={notify.message} />
         )}
+      </Row>
+      <Row mb="100px">
+        <Heading inverse>Employees</Heading>
+        <Button onClick={() => navigate('/employees/create')}>Add New Employee</Button>
       </Row>
       <Row justify="center">
         <Col>
