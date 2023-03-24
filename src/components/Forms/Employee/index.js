@@ -3,7 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
 import { convertToDbDate, converToInputDate } from '../../../utils/date';
-import { Form, Row, Col, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
+import { Form, Row, Col, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Button } from '../../../globalStyles';
+import { ButtonContainer } from './index.style';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
   const navigate = useNavigate();
@@ -63,7 +65,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h5 className="mb-1">Basic Information</h5>
+      <h5>Basic Information</h5>
       <Row>
         <Col>
           <FormGroup>
@@ -124,7 +126,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row>
         <Col>
           <FormGroup>
             <Label for="dob">Date Of Birth</Label>
@@ -141,7 +143,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <h5 className="mb-1">Address Information</h5>
+      <h5>Address Information</h5>
       <Row>
         <Col>
           <FormGroup>
@@ -172,7 +174,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row>
         <Col>
           <FormGroup>
             <Label for="postal_code">Postal Code</Label>
@@ -203,20 +205,26 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
 
-      <h5 className="mb-1">Skills</h5>
-      <Row className="mb-3">
+      <h5>Skills</h5>
+      <Row>
         <Col>
           <SkillSet skills={employee?.skills} isDisabled={isDisabled} />
         </Col>
       </Row>
       {!isDisabled && (
         <Row>
-          <Button bssize="lg" color="primary" type="submit">
-            {paramsId ? 'Update' : 'Create'}
-          </Button>
-          <Button bssize="lg" color="secondary" onClick={() => navigate(-1)}>
-            Cancel
-          </Button>
+          <ButtonContainer>
+            <Button
+              background="#55595e"
+              border="3px solid #55595e"
+              minWidth="140px"
+              onClick={() => navigate(-1)}>
+              Cancel
+            </Button>
+            <Button minWidth="140px" type="submit">
+              {paramsId ? 'Update' : 'Create'}
+            </Button>
+          </ButtonContainer>
         </Row>
       )}
     </Form>

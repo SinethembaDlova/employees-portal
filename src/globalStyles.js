@@ -75,6 +75,7 @@ export const Button = styled.button`
   border: ${({ border }) => (border ? border : '3px solid #1635fd')};
   cursor: pointer;
   margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};
 `;
 
 export default GlobalStyle;
