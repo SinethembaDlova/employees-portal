@@ -25,6 +25,17 @@ export const Heading = styled.h2`
   width: ${({ width }) => (width ? width : '100%')};
 `;
 
+export const SubHeading = styled.h3`
+  font-size: clamp(0.8rem, 7vw, 1.5rem);
+  margin: ${({ margin }) => (margin ? margin : '')};
+  margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  margin-top: ${({ mt }) => (mt ? mt : '')};
+  color: ${({ inverse }) => (inverse ? '#274064' : '#fff')};
+  letter-spacing: 0.1rem;
+  line-height: 2;
+  width: ${({ width }) => (width ? width : '100%')};
+`;
+
 export const Row = styled.div`
   display: flex;
   justify-content: ${({ justify }) => (justify ? justify : '')};
@@ -32,7 +43,7 @@ export const Row = styled.div`
   gap: ${({ gap }) => (gap ? gap : '')};
   padding: ${({ padding }) => (padding ? padding : '')};
   margin: ${({ margin }) => (margin ? margin : '')};
-  margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  margin-bottom: ${({ mb }) => (mb ? mb : '30px')};
   position: ${({ position }) => (position ? position : '')};
   width: ${({ width }) => (width ? width : 'auto')};
   min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};

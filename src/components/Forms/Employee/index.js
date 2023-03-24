@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
 import { convertToDbDate, converToInputDate } from '../../../utils/date';
 import { Form, Row, Col, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
-import { Button } from '../../../globalStyles';
+import { Button, SubHeading } from '../../../globalStyles';
 import { ButtonContainer } from './index.style';
 
 const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) => {
@@ -65,7 +65,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h5>Basic Information</h5>
+      <SubHeading inverse>Basic Information</SubHeading>
       <Row>
         <Col>
           <FormGroup>
@@ -143,7 +143,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
           </FormGroup>
         </Col>
       </Row>
-      <h5>Address Information</h5>
+      <SubHeading inverse>Address Information</SubHeading>
       <Row>
         <Col>
           <FormGroup>
@@ -205,7 +205,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
         </Col>
       </Row>
 
-      <h5>Skills</h5>
+      <SubHeading inverse>Skills</SubHeading>
       <Row>
         <Col>
           <SkillSet skills={employee?.skills} isDisabled={isDisabled} />
