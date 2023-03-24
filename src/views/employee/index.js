@@ -61,6 +61,11 @@ function Employee() {
 
   return (
     <Container>
+      <Row justify="center" mb="20px">
+        {notify.variant && notify.message && (
+          <Notification variant={notify.variant} message={notify.message} />
+        )}
+      </Row>
       <Row>
         <Heading inverse>Employee</Heading>
         <Col>
@@ -79,11 +84,6 @@ function Employee() {
             <Label check>{isDisabled ? 'Unlock form' : 'Lock form'}</Label>
           </FormGroup>
         </Col>
-      </Row>
-      <Row className="mt-4 mb-4">
-        {notify.variant && notify.message && (
-          <Notification variant={notify.variant} message={notify.message} />
-        )}
       </Row>
       <EmployeeForm
         employee={employee}
