@@ -35,10 +35,10 @@ const SkillSet = ({ skills, isDisabled }) => {
         newSkill.seniority_rating === 'Please select an option',
     });
 
-    setImmediate(() => {
+    setTimeout(() => {
       const formIsValid = Object.values(errors).every((error) => error === false);
       if (formIsValid) skills.push(newSkill);
-    });
+    }, 0);
   };
 
   return (
