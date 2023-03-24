@@ -57,10 +57,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       country: employee.address.country.length === 0,
     });
 
-    setImmediate(() => {
+    setTimeout(() => {
       const formIsValid = Object.values(errors).every((error) => error === false);
       if (formIsValid) onSubmit(employee);
-    });
+    }, 0);
   };
 
   return (

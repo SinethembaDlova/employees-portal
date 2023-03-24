@@ -37,7 +37,10 @@ const SkillSet = ({ skills, isDisabled }) => {
 
     setTimeout(() => {
       const formIsValid = Object.values(errors).every((error) => error === false);
-      if (formIsValid) skills.push(newSkill);
+      if (formIsValid) {
+        skills.push(newSkill);
+        setNewSkill({ skill: '', year_of_exp: 0, seniority_rating: '' });
+      }
     }, 0);
   };
 
