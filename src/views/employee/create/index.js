@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Row } from 'reactstrap';
+// import { Row } from 'reactstrap';
 import { EmployeeContext } from '../../../context/EmployeeContext';
 import { Container } from '../../../globalStyles';
 import EmployeeForm from '../../../components/Forms/Employee';
 import Loader from '../../../components/Loader';
+import { Heading, Row } from '../../../globalStyles';
 
 function CreateEmployee() {
   const { addEmployee, isLoading } = useContext(EmployeeContext);
@@ -33,12 +34,10 @@ function CreateEmployee() {
 
   return (
     <Container>
-      <Row className="mb-4">
-        <h1>Create Employee</h1>
-      </Row>
       <Row>
-        <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleAdding} />
+        <Heading inverse>Create Employee</Heading>
       </Row>
+      <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleAdding} />
     </Container>
   );
 }
