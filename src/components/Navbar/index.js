@@ -1,14 +1,10 @@
 import React from 'react';
-import { NavbarContainer, LeftContainer, NavbarInnerContainer, NavbarLink } from './index.style';
+import { NavbarContainer, NavbarInnerContainer } from './index.style';
 
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <NavbarInnerContainer>
-        <LeftContainer>
-          <NavbarLink to="/"> Employees Portal</NavbarLink>
-        </LeftContainer>
-      </NavbarInnerContainer>
+      <NavbarInnerContainer />
     </NavbarContainer>
   );
 };

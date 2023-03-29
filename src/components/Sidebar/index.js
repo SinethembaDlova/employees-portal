@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { SidebarContainer, SidebarMenuContainer, StyledNavLink } from './index.style';
+import {
+  SidebarContainer,
+  SidebarMenuContainer,
+  StyledNavLink,
+  LogoContainer,
+} from './index.style';
 
 const Sidebar = ({ toggle }) => {
   const items = ['Employees'];
@@ -16,6 +21,10 @@ const Sidebar = ({ toggle }) => {
     <SidebarContainer act={toggle}>
       <SidebarMenuContainer>
         <div>
+          <LogoContainer id="item" to="/">
+            <img src="https://logodix.com/logo/1931246.png" alt=""></img>
+          </LogoContainer>
+
           {items.map((item, index) => {
             let strClass = '';
             if (isActive === index) {

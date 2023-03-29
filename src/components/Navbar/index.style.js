@@ -4,17 +4,18 @@ import styled from 'styled-components';
 const NavbarContainer = styled.nav`
   width: 100%;
   height: 65px;
-  background-color: #1635fc;
+  background-color: #ffffffffffff;
   display: flex;
   flex-direction: row;
-  @media (min-width: 700px) {
-    height: 65px;
-  }
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   font-weight: bold;
   border-radius: 2px;
   margin-bottom: 1%;
   position: fixed;
+  left: 181px;
+  @media (min-width: 700px) {
+    height: 65px;
+  }
 `;
 
 const LeftContainer = styled.div`

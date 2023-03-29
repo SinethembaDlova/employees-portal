@@ -14,8 +14,8 @@ function App() {
     <EmployeeProvider>
       <Router>
         <GlobalStyle />
-        <Navbar />
         <Sidebar />
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Navigate to="/employees" replace />} />
           <Route exact path="/employees" element={<Employees />} />
