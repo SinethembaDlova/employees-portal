@@ -94,7 +94,7 @@ function EmployeeProvider({ children }) {
     try {
       setIsLoading(true);
       const results = await putEmployee(id, employee);
-      setEmployees(employees.map((employee) => (employee._id === id ? results.data : employee)));
+      setEmployees(employees.map((employee) => (employee._id === id ? results : employee)));
       setIsLoading(false);
       setNotify({
         variant: 'success',
