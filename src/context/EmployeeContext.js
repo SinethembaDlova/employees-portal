@@ -29,7 +29,7 @@ function EmployeeProvider({ children }) {
       try {
         setIsLoading(true);
         const results = await readEmployees();
-        setEmployees(results?.data);
+        setEmployees(results);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -49,7 +49,7 @@ function EmployeeProvider({ children }) {
     try {
       setIsLoading(true);
       const createdEmployee = await createEmployee(employee);
-      setEmployees([...employees, createdEmployee?.data]);
+      setEmployees([...employees, createdEmployee]);
       setIsLoading(false);
       setNotify({
         variant: 'success',
@@ -58,7 +58,7 @@ function EmployeeProvider({ children }) {
       setTimeout(() => {
         setNotify({ variant: null, message: null });
       }, 5000);
-      return createdEmployee?.data;
+      return createdEmployee;
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -77,7 +77,7 @@ function EmployeeProvider({ children }) {
       setIsLoading(true);
       const results = await readEmployee(id);
       setIsLoading(false);
-      return results?.data;
+      return results;
     } catch (error) {
       console.error(error);
       setNotify({
