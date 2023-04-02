@@ -221,7 +221,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
               onClick={() => navigate(-1)}>
               Cancel
             </Button>
-            <Button minWidth="140px" type="submit">
+            <Button variant="primary" minWidth="140px" type="submit">
               {paramsId ? 'Update' : 'Create'}
             </Button>
           </ButtonContainer>

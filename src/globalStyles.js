@@ -76,14 +76,28 @@ export const Col = styled.div`
 
 export const Button = styled.button`
   border-radius: 5px;
-  background: ${({ background }) => (background ? background : '#1635fc')};
+  background: ${({ variant }) =>
+    variant === 'primary'
+      ? '#1635fc'
+      : variant === 'success'
+      ? '#00A884'
+      : variant === 'danger'
+      ? 'red'
+      : 'gray'};
   white-space: nowrap;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   outline: none;
-  border: ${({ border }) => (border ? border : '3px solid #1635fd')};
+  border: ${({ variant }) =>
+    variant === 'primary'
+      ? '3px solid #1635fc'
+      : variant === 'success'
+      ? '3px solid #00A884'
+      : variant === 'danger'
+      ? '3px solid red'
+      : '3px solid gray'};
   cursor: pointer;
   margin-bottom: ${({ mb }) => (mb ? mb : '')};
   min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};

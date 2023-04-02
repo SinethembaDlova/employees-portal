@@ -69,7 +69,7 @@ function Employee() {
       <Row>
         <Heading inverse>Employee</Heading>
         <Col>
-          <Button background="red" border="3px solid red" mb="20px" onClick={handleDeleting}>
+          <Button variant="danger" mb="20px" onClick={handleDeleting}>
             Delete Employee
           </Button>
           <FormGroup switch disabled={isDisabled}>

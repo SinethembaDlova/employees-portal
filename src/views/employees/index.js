@@ -33,7 +33,9 @@ function Employees() {
       </Row>
       <Row mb="100px">
         <Heading inverse>Employees</Heading>
-        <Button onClick={() => navigate('/employees/create')}>Add New Employee</Button>
+        <Button variant="primary" onClick={() => navigate('/employees/create')}>
+          Add New Employee
+        </Button>
       </Row>
       <Row justify="center">
         <Col>
