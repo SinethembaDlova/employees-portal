@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   margin: 0 auto auto 200px;
   padding: 100px;
+  @media only screen and (max-width: 600px) {
+    margin: 0 auto auto 80px;
+    padding: 40px;
+  }
 `;
 
 export const Heading = styled.h2`
