@@ -3,19 +3,18 @@ import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
   position: fixed;
-  // top: 0;
-  width: ${({ act }) => (act ? '0px' : '68px')};
+  width: ${({ act }) => (act ? '0px' : '180px')};
   padding: ${({ act }) => (act ? '0px' : '1rem 1rem 0 0')};
   height: 100vh;
   background-color: #1635fc;
   transition: 0.5s;
   z-index: 100;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (max-width: 600px) {
     padding: 1rem 1rem 0 0;
     background-color: #1635fc;
     margin-left: 0px;
-    width: ${({ act }) => (!act ? '180px' : '68px')};
+    width: ${({ act }) => (act ? act : '68px')};
   }
 `;
 

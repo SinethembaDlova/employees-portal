@@ -13,8 +13,9 @@ const NavbarContainer = styled.nav`
   margin-bottom: 1%;
   position: fixed;
   left: 181px;
-  @media (min-width: 700px) {
+  @media (max-width: 600px) {
     height: 65px;
+    left: 68px;
   }
 `;
 
