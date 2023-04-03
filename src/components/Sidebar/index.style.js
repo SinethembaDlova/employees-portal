@@ -67,7 +67,7 @@ const LogoContainer = styled(StyledNavLink)`
   padding-bottom: 2rem;
   margin: -7px;
   margin-left: 0px;
-  border-style: ${(props) => (!props.act ? 'solid' : 'none')};
+  border-style: ${({ act }) => (!act ? 'solid' : 'none')};
 
   i:hover {
     margin-left: -7px;
@@ -82,6 +82,15 @@ const LogoContainer = styled(StyledNavLink)`
   img {
     width: 60px;
     height: 60px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin: -3px;
+    margin-left: 0px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 `;
 
