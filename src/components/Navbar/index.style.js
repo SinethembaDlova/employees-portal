@@ -10,8 +10,6 @@ const NavbarContainer = styled.nav`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   font-weight: bold;
   border-radius: 2px;
-  margin-bottom: 1%;
-  position: fixed;
   left: 181px;
   @media (max-width: 600px) {
     height: 65px;
