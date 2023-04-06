@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
@@ -22,6 +22,10 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
     country: false,
   });
   const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    setFormIsValid(Object.values(errors).every((error) => error === true));
+  }, []);
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
@@ -58,7 +62,6 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       country: employee.address.country.length === 0,
     });
 
-    setFormIsValid(Object.values(errors).every((error) => error === false));
     if (formIsValid) onSubmit(employee);
   };
 
