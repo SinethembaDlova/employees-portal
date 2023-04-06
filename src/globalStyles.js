@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   margin: 60px auto auto 180px;
   padding: 50px;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   background-color: #f5f9fa;
   @media only screen and (max-width: 600px) {
     margin: 0 auto auto 68px;

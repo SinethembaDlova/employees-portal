@@ -208,7 +208,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       </Row>
 
       <SubHeading inverse>Skills</SubHeading>
-      <Row>
+      <Row className="mb-4">
         <Col>
           <SkillSet skills={employee?.skills} isDisabled={isDisabled} />
         </Col>
@@ -216,11 +216,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       {!isDisabled && (
         <Row>
           <ButtonContainer>
-            <Button
-              background="#55595e"
-              border="3px solid #55595e"
-              minWidth="140px"
-              onClick={() => navigate(-1)}>
+            <Button minWidth="140px" onClick={() => navigate(-1)}>
               Cancel
             </Button>
             <Button variant="primary" minWidth="140px" type="submit">
