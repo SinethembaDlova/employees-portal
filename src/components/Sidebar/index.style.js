@@ -3,8 +3,11 @@ import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
   position: fixed;
-  width: ${({ act }) => (act ? '0px' : '180px')};
-  padding: ${({ act }) => (act ? '0px' : '1rem 1rem 0 0')};
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  padding: 1rem 1rem 0 0;
   height: 100vh;
   background-color: #1635fc;
   transition: 0.5s;
@@ -13,8 +16,7 @@ const SidebarContainer = styled.div`
   @media only screen and (max-width: 600px) {
     padding: 1rem 1rem 0 0;
     background-color: #1635fc;
-    margin-left: 0px;
-    width: ${({ act }) => (act ? act : '68px')};
+    width: 68px;
   }
 `;
 
