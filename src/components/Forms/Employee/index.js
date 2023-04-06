@@ -21,6 +21,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
     postal_code: false,
     country: false,
   });
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
@@ -57,10 +58,8 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       country: employee.address.country.length === 0,
     });
 
-    setTimeout(() => {
-      const formIsValid = Object.values(errors).every((error) => error === false);
-      if (formIsValid) onSubmit(employee);
-    }, 0);
+    setFormIsValid(Object.values(errors).every((error) => error === false));
+    if (formIsValid) onSubmit(employee);
   };
 
   return (
