@@ -28,14 +28,18 @@ function CreateEmployee() {
     navigate(`/employees/${createdEmployee._id}`);
   };
 
-  if (isLoading) return <Loader />;
-
   return (
     <Container>
-      <Row>
-        <Heading inverse>Create Employee</Heading>
-      </Row>
-      <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleAdding} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Row>
+            <Heading inverse>Create Employee</Heading>
+          </Row>
+          <EmployeeForm employee={employee} setEmployee={setEmployee} onSubmit={handleAdding} />
+        </>
+      )}
     </Container>
   );
 }

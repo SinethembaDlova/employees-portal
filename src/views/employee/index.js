@@ -57,40 +57,44 @@ function Employee() {
     })();
   }, [params.id]);
 
-  if (isLoading) return <Loader />;
-
   return (
     <Container>
-      <Row justify="center" mb="20px">
-        {notify.variant && notify.message && (
-          <Notification variant={notify.variant} message={notify.message} />
-        )}
-      </Row>
-      <Row>
-        <Heading inverse>Employee</Heading>
-        <Col>
-          <Button variant="danger" mb="20px" onClick={handleDeleting}>
-            Delete Employee
-          </Button>
-          <FormGroup switch disabled={isDisabled}>
-            <Input
-              type="switch"
-              bssize="md"
-              checked={isDisabled}
-              onChange={() => {
-                setIsDisabled(!isDisabled);
-              }}
-            />
-            <Label check>{isDisabled ? 'Unlock form' : 'Lock form'}</Label>
-          </FormGroup>
-        </Col>
-      </Row>
-      <EmployeeForm
-        employee={employee}
-        setEmployee={setEmployee}
-        onSubmit={handleUpdating}
-        isDisabled={isDisabled}
-      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Row justify="center" mb="20px">
+            {notify.variant && notify.message && (
+              <Notification variant={notify.variant} message={notify.message} />
+            )}
+          </Row>
+          <Row>
+            <Heading inverse>Employee</Heading>
+            <Col>
+              <Button variant="danger" mb="20px" onClick={handleDeleting}>
+                Delete Employee
+              </Button>
+              <FormGroup switch disabled={isDisabled}>
+                <Input
+                  type="switch"
+                  bssize="md"
+                  checked={isDisabled}
+                  onChange={() => {
+                    setIsDisabled(!isDisabled);
+                  }}
+                />
+                <Label check>{isDisabled ? 'Unlock form' : 'Lock form'}</Label>
+              </FormGroup>
+            </Col>
+          </Row>
+          <EmployeeForm
+            employee={employee}
+            setEmployee={setEmployee}
+            onSubmit={handleUpdating}
+            isDisabled={isDisabled}
+          />
+        </>
+      )}
     </Container>
   );
 }

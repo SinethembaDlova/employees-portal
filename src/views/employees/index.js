@@ -22,33 +22,44 @@ function Employees() {
       actions: <Link to={`/employees/${item._id}`}>View Employee</Link>,
     }));
 
-  if (isLoading) return <Loader />;
-
   return (
     <Container>
-      <Row justify="center" mb="20px">
-        {notify.variant && notify.message && (
-          <Notification variant={notify.variant} message={notify.message} />
-        )}
-      </Row>
-      <Row mb="100px">
-        <Heading inverse>Employees</Heading>
-        <Button variant="primary" onClick={() => navigate('/employees/create')}>
-          Add New Employee
-        </Button>
-      </Row>
-      <Row justify="center">
-        <Col>
-          {employees.length > 0 ? (
-            <Table
-              columnNames={['#', 'First Name', 'Last Name', 'Email', 'Contact Number', 'Actions']}
-              data={tableData(employees)}
-            />
-          ) : (
-            <EmptyState />
-          )}
-        </Col>
-      </Row>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Row justify="center" mb="20px">
+            {notify.variant && notify.message && (
+              <Notification variant={notify.variant} message={notify.message} />
+            )}
+          </Row>
+          <Row mb="100px">
+            <Heading inverse>Employees</Heading>
+            <Button variant="primary" onClick={() => navigate('/employees/create')}>
+              Add New Employee
+            </Button>
+          </Row>
+          <Row justify="center">
+            <Col>
+              {employees.length > 0 ? (
+                <Table
+                  columnNames={[
+                    '#',
+                    'First Name',
+                    'Last Name',
+                    'Email',
+                    'Contact Number',
+                    'Actions',
+                  ]}
+                  data={tableData(employees)}
+                />
+              ) : (
+                <EmptyState />
+              )}
+            </Col>
+          </Row>
+        </>
+      )}
     </Container>
   );
 }
