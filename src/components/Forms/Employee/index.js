@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SkillSet from '../../SkillSet';
@@ -21,11 +21,6 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
     postal_code: false,
     country: false,
   });
-  const [formIsValid, setFormIsValid] = useState(false);
-
-  useEffect(() => {
-    setFormIsValid(Object.values(errors).every((error) => error === true));
-  }, []);
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
@@ -50,7 +45,7 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setErrors({
+    const newErrors = {
       first_name: employee.first_name.length === 0,
       last_name: employee.last_name.length === 0,
       contact_number: employee.contact_number.length === 0,
@@ -60,9 +55,13 @@ const EmployeeForm = ({ employee, setEmployee, isDisabled = false, onSubmit }) =
       city: employee.address.city.length === 0,
       postal_code: employee.address.postal_code.length === 0,
       country: employee.address.country.length === 0,
-    });
+    };
 
-    if (formIsValid) onSubmit(employee);
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some((error) => error)) return;
+
+    onSubmit(employee);
   };
 
   return (
