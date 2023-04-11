@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin: 60px auto auto 180px;
   padding: 50px;
   min-height: calc(100vh - 60px);
-  background-color: #f5f9fa;
+  background-color: #f0f2f5;
   @media only screen and (max-width: 600px) {
     margin: 0 auto auto 68px;
     padding: 65px;
