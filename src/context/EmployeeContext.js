@@ -40,7 +40,7 @@ function EmployeeProvider({ children }) {
         });
         setTimeout(() => {
           setNotify({ variant: null, message: null });
-        }, 5000);
+        }, 3000);
       }
     })();
   }, []);
@@ -57,7 +57,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
       return createdEmployee;
     } catch (error) {
       console.error(error);
@@ -68,7 +68,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     }
   };
 
@@ -86,7 +86,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     }
   };
 
@@ -102,7 +102,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     } catch (error) {
       console.error(error);
       setNotify({
@@ -111,7 +111,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     }
   };
 
@@ -119,7 +119,7 @@ function EmployeeProvider({ children }) {
     try {
       setIsLoading(true);
       const results = await deleteEmployee(id);
-      if (results.status === 200) {
+      if (results.messege === 'Employee successfully deleted') {
         setEmployees(employees.filter((employee) => employee._id !== id));
       }
       setIsLoading(false);
@@ -129,7 +129,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     } catch (error) {
       console.error(error);
       setNotify({
@@ -138,7 +138,7 @@ function EmployeeProvider({ children }) {
       });
       setTimeout(() => {
         setNotify({ variant: null, message: null });
-      }, 5000);
+      }, 3000);
     }
   };
 
